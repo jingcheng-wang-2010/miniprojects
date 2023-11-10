@@ -240,3 +240,17 @@ function truncateString(str, num) {
 function truncateString2(str, num) {
     return str.length > num ? str.slice(0, num) + "..." : str;
   }
+
+
+// Finders Keepers
+
+function findElement(arr, func) {
+    for (let i = 0; i < arr.length; i++) {
+      if (func(arr[i])) {
+        return arr[i];
+      }
+    }
+    return undefined;
+  }
+  
+  findElement([1, 2, 3, 4], num => num % 2 === 0);
