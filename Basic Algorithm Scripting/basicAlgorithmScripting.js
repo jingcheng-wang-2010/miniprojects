@@ -235,3 +235,8 @@ function truncateString(str, num) {
   }
   
   truncateString("A-tisket a-tasket A green and yellow basket", 8);
+
+// shorter form
+function truncateString2(str, num) {
+    return str.length > num ? str.slice(0, num) + "..." : str;
+  }
