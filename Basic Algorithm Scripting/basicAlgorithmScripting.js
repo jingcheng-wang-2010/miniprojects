@@ -77,3 +77,55 @@ function factorialize3(num) {
   }
   
   findLongestWordLength("The quick brown fox jumped over the lazy dog");
+
+  // loop through whole str and calculate when encounter space
+  function findLongestWordLength2(str) {
+    let longestLength = 0;
+    let currentLength = 0;
+    
+    for (let i = 0; i < str.length; i++) {
+      if (str[i] === " ") {
+        if (currentLength > longestLength) {
+          longestLength = currentLength;
+        }
+        currentLength = 0;
+      } else {
+        currentLength++;
+      }
+    }
+    if (currentLength > longestLength) {
+      longestLength = currentLength;
+    }
+    
+    return longestLength;
+    }
+
+    // use .reduce()
+    function findLongestWordLength3(s) {
+        return s
+          .split(' ')
+          .reduce((longest, word) => Math.max(longest, word.length), 0);
+      }
+
+      // Using .map()
+      function findLongestWordLength4(str) {
+        return Math.max(...str.split(" ").map(word => word.length));
+      }
+
+      // recursive
+      function findLongestWordLength5(str) {
+        // split the string into individual words
+        const words = str.split(" ");
+      
+        // words only has 1 element left that is the longest element
+        if (words.length == 1) {
+          return words[0].length;
+        }
+      
+        // if words has multiple elements, remove the first element
+        // and recursively call the function
+        return Math.max(
+          words[0].length,
+          findLongestWordLength5(words.slice(1).join(" "))
+        );
+      }
