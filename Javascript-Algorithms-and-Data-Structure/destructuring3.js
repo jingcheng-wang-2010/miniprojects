@@ -7,7 +7,6 @@ const LOCAL_FORECAST = {
   
   // Only change code below this line
     
-  const lowToday = LOCAL_FORECAST.today.low;
-  const highToday = LOCAL_FORECAST.today.high;
+  const { today: { low : lowToday, high : highToday }} = LOCAL_FORECAST;
   
   // Only change code above this line
