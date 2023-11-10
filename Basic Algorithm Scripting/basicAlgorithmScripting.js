@@ -37,3 +37,29 @@ function factorialize(num) {
   }
   
   factorialize(5);
+
+// initiate product as 1, for loop won't trigger unless num is greater than 1
+  function factorialize2(num) {
+    let product = 1;
+    for (let i = 2; i <= num; i++) {
+      product *= i;
+    }
+    return product;
+  }
+
+// recurive solution
+function factorialize3(num) {
+    if (num <= 0) {
+      return 1;
+    }
+    return num * factorialize(num - 1);
+  }
+
+// tail recursion solution
+  function factorialize(num, factorial = 1) {
+    if (num <= 0) {
+      return factorial;
+    } else {
+      return factorialize(num - 1, factorial * num);
+    }
+  }
