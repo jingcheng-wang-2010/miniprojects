@@ -268,3 +268,10 @@ function findElement(arr, func) {
       return arr[0];
     }
   }
+
+  //Boo who
+  function booWho(bool) {
+    return typeof bool == "boolean" ? true : false;
+  }
+  
+  booWho(null);
