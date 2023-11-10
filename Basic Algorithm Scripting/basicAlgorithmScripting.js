@@ -292,3 +292,18 @@ function findElement(arr, func) {
   }
   
   titleCase("I'm a little tea pot");
+
+  // map
+  function titleCase2(str) {
+    return str
+      .toLowerCase()
+      .split(" ")
+      .map(val => val.replace(val.charAt(0), val.charAt(0).toUpperCase()))
+      .join(" ");
+  }
+// regex
+  function titleCase3(str) {
+    return str
+      .toLowerCase()
+      .replace(/(^|\s)\S/g, L => L.toUpperCase());
+  }
