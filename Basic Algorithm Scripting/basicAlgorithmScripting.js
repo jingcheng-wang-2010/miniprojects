@@ -63,3 +63,17 @@ function factorialize3(num) {
       return factorialize(num - 1, factorial * num);
     }
   }
+
+  // Find the Longest Word in a String
+  function findLongestWordLength(str) {
+    let longest = 0;
+    let splitStr = str.split(" ");
+    for (let i = 0; i < splitStr.length; i++) {
+        if (splitStr[i].length > longest) {
+            longest = splitStr[i].length;
+        }
+    }
+    return longest;
+  }
+  
+  findLongestWordLength("The quick brown fox jumped over the lazy dog");
