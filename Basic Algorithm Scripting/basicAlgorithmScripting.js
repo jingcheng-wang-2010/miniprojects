@@ -194,4 +194,8 @@ function largestOfFour5(arr, finalArr = []) {
   
     return str.slice(str.length - target.length) === target;
   }
+  // slice using negative number
+  function confirmEnding3(str, target) {
+    return str.slice(-target.length) === target
+  }
 
