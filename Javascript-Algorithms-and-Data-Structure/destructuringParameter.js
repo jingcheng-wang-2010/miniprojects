@@ -9,5 +9,5 @@ const stats = {
   };
   
   // Only change code below this line
-  const half = (stats) => (stats.max + stats.min) / 2.0; 
+  const half = ({max, min}) => (max + min) / 2.0; 
   // Only change code above this line
