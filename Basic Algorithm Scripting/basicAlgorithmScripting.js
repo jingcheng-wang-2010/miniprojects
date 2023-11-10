@@ -275,3 +275,8 @@ function findElement(arr, func) {
   }
   
   booWho(null);
+
+  // shorter
+  function booWho(bool) {
+    return typeof bool === "boolean";
+  }
