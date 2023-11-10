@@ -178,3 +178,20 @@ function largestOfFour5(arr, finalArr = []) {
       ? finalArr
       : largestOfFour(arr.slice(1), finalArr.concat(Math.max(...arr[0])))
   }
+
+// Confirm the Ending
+  function confirmEnding(str, target) {
+    let regex = new RegExp(target + "$", "i");
+    return regex.test(str);
+  }
+  
+  confirmEnding("Bastian", "n");
+
+  // Declarative approach
+  function confirmEnding2(str, target) {
+    // "Never give up and good luck will find you."
+    // -- Falcor
+  
+    return str.slice(str.length - target.length) === target;
+  }
+
