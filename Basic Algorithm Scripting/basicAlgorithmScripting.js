@@ -211,5 +211,17 @@ function largestOfFour5(arr, finalArr = []) {
   
   repeatStringNumTimes("abc", 3);
 
+// recursive
+function repeatStringNumTimes2(str, num) {
+    if (num < 1) {
+      return "";
+    } else {
+      return str + repeatStringNumTimes(str, num - 1);
+    }
+  }
 
+  // recursive shorter
+  function repeatStringNumTimes3(str, num) {
+    return num > 0 ? str + repeatStringNumTimes(str, num - 1) : '';
+  }
 
