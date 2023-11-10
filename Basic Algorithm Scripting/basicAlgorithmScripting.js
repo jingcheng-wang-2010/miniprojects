@@ -18,3 +18,10 @@ function reverseString(str) {
 }
   
 reverseString("hello"); 
+
+function reverseString2(str) {
+    return str
+    .split("")
+    .reverse()
+    .join("");
+}
