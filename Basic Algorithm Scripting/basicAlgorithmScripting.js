@@ -347,3 +347,8 @@ function findElement(arr, func) {
   }
   
   bouncer([7, "ate", "", false, 9]);
+
+  // shorter
+  function bouncer(arr) {
+    return arr.filter(Boolean);
+  }
