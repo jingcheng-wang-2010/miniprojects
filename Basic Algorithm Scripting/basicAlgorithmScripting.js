@@ -334,3 +334,16 @@ function findElement(arr, func) {
   function frankenSplice3(arr1, arr2, n) {
     return [...arr2.slice(0, n), ...arr1, ...arr2.slice(n)];
   }
+
+// Falsy Bouncer
+  function bouncer(arr) {
+    let arr2 = [];
+    for (let i = 0; i < arr.length; i++) {
+      if (Boolean(arr[i])) {
+        arr2.push(arr[i]);
+      }
+    }
+    return arr2;
+  }
+  
+  bouncer([7, "ate", "", false, 9]);
