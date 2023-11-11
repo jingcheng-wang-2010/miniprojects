@@ -311,7 +311,7 @@ function findElement(arr, func) {
 
   //Slice and Splice
   function frankenSplice(arr1, arr2, n) {
-    let arr3 = arr2.slice(0,arr2.length);
+    let arr3 = arr2.slice();
     //console.log("1. arr3:", arr3);
     arr3.splice(n, 0, ...arr1);
     //console.log("2. arr3:", arr3);
