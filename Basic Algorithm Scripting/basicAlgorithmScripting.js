@@ -442,4 +442,30 @@ function findElement(arr, func) {
     const regex = new RegExp(`[^${elem1}]`, 'i');
     return !regex.test(elem2);
   }
+
+  // chunky monkey
+  function chunkArrayInGroups(arr, size) {
+    console.log("arr:", arr, "size:", size);
+    let outerArr = [];
+    let innerArr = [];
+    for (let i = 0; i < arr.length; i++) {
+      console.log("loop i:", i);
+      if (i === 0) {
+        innerArr.push(arr[i]);
+      } else if (i % size === 0) {
+        outerArr.push(innerArr);
+        innerArr = [];
+        innerArr.push(arr[i]);
+      } else {
+        innerArr.push(arr[i]);
+      }
+      if (i === arr.length - 1) {
+        outerArr.push(innerArr);
+      }
+    }
+    console.log("outerArr:", outerArr);
+    return outerArr;
+  }
+  
+  chunkArrayInGroups(["a", "b", "c", "d"], 2);
   
