@@ -403,4 +403,16 @@ function findElement(arr, func) {
       .sort((a, b) => a - b)
       .indexOf(num);
   }
+
+  // Mutations
+  function mutation(arr) {
+    for (let i = 0; i < arr[1].length; i++ ) {
+      if (arr[0].toLowerCase().search(arr[1][i].toLowerCase()) == -1) {
+        return false;
+      } 
+    }
+    return true;
+  }
+  
+  mutation(["hello", "hey"]);
   
