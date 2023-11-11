@@ -413,6 +413,33 @@ function findElement(arr, func) {
     }
     return true;
   }
-  
+
   mutation(["hello", "hey"]);
+
+  // Declarative
+  function mutation2(arr) {
+    return arr[1]
+      .toLowerCase()
+      .split("")
+      .every(function(letter) {
+        return arr[0].toLowerCase().indexOf(letter) !== -1;
+      });
+  }
+  
+  // recursive
+  function mutation3([ target, test ], i = 0) {
+    target = target.toLowerCase();
+    test = test.toLowerCase();
+    return i >= test.length
+      ? true
+      : !target.includes(test[i])
+        ? false
+        : mutation3([ target, test ], i + 1);
+  }
+
+  // regex negate character set
+  function mutation4([elem1, elem2]) {
+    const regex = new RegExp(`[^${elem1}]`, 'i');
+    return !regex.test(elem2);
+  }
   
