@@ -369,3 +369,38 @@ function findElement(arr, func) {
   }
   
   getIndexToIns([40, 60], 50);
+
+  // shorter
+  function getIndexToIns2(arr, num) {
+    arr.sort((a, b) => a - b);
+  
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] >= num) return i;
+    }
+  
+    return arr.length;
+  }
+
+  // count number of smaller values using filter()
+  function getIndexToIns3(arr, num) {
+    return arr.filter(val => num > val).length;
+  }
+
+  // sort then findIndex()
+  function getIndexToIns4(arr, num) {
+    // sort and find right index
+    let index = arr
+      .sort((curr, next) => curr - next)
+      .findIndex(currNum => num <= currNum);
+    // Returns index or total length of arr
+    return index === -1 ? arr.length : index;
+  }
+  
+  // concat num, then sort, then indexof
+  function getIndexToIns5(arr, num) {
+    return arr
+      .concat(num)
+      .sort((a, b) => a - b)
+      .indexOf(num);
+  }
+  
