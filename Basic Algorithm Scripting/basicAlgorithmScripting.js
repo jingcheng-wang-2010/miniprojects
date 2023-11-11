@@ -468,4 +468,65 @@ function findElement(arr, func) {
   }
   
   chunkArrayInGroups(["a", "b", "c", "d"], 2);
+
+// clearer
+  function chunkArrayInGroups2(arr, size) {
+    let temp = [];
+    const result = [];
   
+    for (let a = 0; a < arr.length; a++) {
+      if (a % size !== size - 1) temp.push(arr[a]);
+      else {
+        temp.push(arr[a]);
+        result.push(temp);
+        temp = [];
+      }
+    }
+  
+    if (temp.length !== 0) result.push(temp);
+    return result;
+  }
+
+  // for loop increment by size
+  function chunkArrayInGroups3(arr, size) {
+    // Break it up.
+    const newArr = [];
+    for (let i = 0; i < arr.length; i += size) {
+      newArr.push(arr.slice(i, i + size));
+    }
+    return newArr;
+  }
+
+  // while loop increment by size
+  function chunkArrayInGroups4(arr, size) {
+    // Break it up.
+    const newArr = [];
+    let i = 0;
+  
+    while (i < arr.length) {
+      newArr.push(arr.slice(i, i + size));
+      i += size;
+    }
+    return newArr;
+  }
+  chunkArrayInGroups(["a", "b", "c", "d"], 2);
+
+  // splice arr to nothing
+  function chunkArrayInGroups5(arr, size) {
+    const newArr = [];
+    while (arr.length > 0) {
+      newArr.push(arr.splice(0, size));
+    }
+    return newArr;
+  }
+  
+  // recursive
+  function chunkArrayInGroups6(arr, size) {
+    if (arr.length <= size) {
+      return [arr];
+    } else {
+      return [arr.slice(0, size)].concat(
+        chunkArrayInGroups6(arr.slice(size), size)
+      );
+    }
+  }
