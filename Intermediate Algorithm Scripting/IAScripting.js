@@ -184,4 +184,41 @@ function whatIsInAName(collection, source) {
 
 whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" });
 
+// procedural
+function whatIsInAName1(collection, source) {
+    // What's in a name?
+    const collectionMatches = [];
+  
+    for (let i = 0; i < collection.length; i++) {
+      let foundMismatch = false;
+  
+      for (const sourceProp in source) {
+        if (collection[i][sourceProp] !== source[sourceProp]) {
+          foundMismatch = true;
+        }
+      }
+      if (!foundMismatch) {
+        collectionMatches.push(collection[i]);
+      }
+    }
+    return collectionMatches;
+}
+
+// sourcekeys and filter
+function whatIsInAName2(collection, source) {
+    // "What's in a name? that which we call a rose
+    // By any other name would smell as sweet.”
+    // -- by William Shakespeare, Romeo and Juliet
+    const souceKeys = Object.keys(source);
+  
+    // filter the collection
+    return collection.filter(obj => {
+      for (let i = 0; i < sourceKeys.length; i++) {
+        if (obj[sourceKeys[i]] !== source[sourceKeys[i]]) {
+          return false;
+        }
+      }
+      return true;
+    });
+}
 /* --- */
