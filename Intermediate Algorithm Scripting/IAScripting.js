@@ -428,4 +428,20 @@ function pairElement(str) {
   
 pairElement("GCG");
 
+//map
+function pairElement1(str) {
+    // create object for pair lookup
+    const pairs = {
+      A: "T",
+      T: "A",
+      C: "G",
+      G: "C"
+    };
+  
+    // map character to array of character and matching pair
+    return str
+      .split("")
+      .map(x => [x, pairs[x]]);
+  }
+
 /* --- */
