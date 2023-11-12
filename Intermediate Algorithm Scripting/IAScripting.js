@@ -525,4 +525,68 @@ function uniteUnique(...arr) {
   
   uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
 
+// ...arguments, push
+function uniteUnique1(arr) {
+  const args = [...arguments];
+  const result = [];
+  for (let i = 0; i < args.length; i++) {
+    for (let j = 0; j < args[i].length; j++) {
+      if (!result.includes(args[i][j])) {
+        result.push(args[i][j]);
+      }
+    }
+  }
+  return result;
+}
+
+// Set, flat
+function uniteUnique2(...arr) {
+    return [...new Set(arr.flat())];
+}
+
+// Or as an arrow function
+const uniteUnique3 = (...arr) => [...new Set(arr.flat())];
+
+// flat filter
+function uniteUnique4() {
+    return [...arguments]
+      .flat()
+      .filter((item, ind, arr) => arr.indexOf(item) === ind);
+  }
 /* --- */
+
+/* Convert HTML Entities
+Convert the characters &, <, >, " (double quote), and ' (apostrophe), in a string to their corresponding HTML entities.
+*/
+
+function convertHTML(str) {
+    let temp = str.split("");
+    for (let i = 0; i < temp.length; i++) {
+        switch(temp[i]) {
+            case "&":
+                temp[i] = "&amp;";
+                break;
+            case "<":
+                temp[i] = "&lt;";
+                break;
+            case ">":
+                temp[i] = "&gt;";
+                break;
+            case '"':
+                temp[i] = "&quot;";
+                break;
+            case "'":
+                temp[i] = "&apos;";
+                break;
+        }
+    }
+    temp = temp.join("");
+    console.log(temp);
+    return temp;
+}
+  
+  convertHTML("Dolce & Gabbana");
+
+
+
+  /* --- */
