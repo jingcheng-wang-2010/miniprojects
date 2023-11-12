@@ -445,3 +445,33 @@ function pairElement1(str) {
   }
 
 /* --- */
+
+/*Missing letters
+Find the missing letter in the passed letter range and return it.
+If all letters are present in the range, return undefined.
+*/
+
+function fearNotLetter(str) {
+    console.log("str:", str);
+    const alphabet = "abcdefghijklmnopqrstuvwxyz";
+    const firstLetterIndex = alphabet.indexOf(str[0]);
+    const lastLetterIndex = alphabet.indexOf(str[str.length-1]);
+    const fullLetterString = alphabet.slice(firstLetterIndex, lastLetterIndex + 1);
+    console.log("fullLetterString:", fullLetterString);
+    if (str.length === fullLetterString.length){
+      console.log("same length, no missing letter");
+      return undefined;
+    } else {
+      console.log(fullLetterString.split(""));
+      let missingLetter = fullLetterString
+      .split("")
+      .filter(letter => str.split("").indexOf(letter) == -1)
+      .join("");
+      console.log("missingLetter:", missingLetter);
+      return missingLetter;
+    }
+  }
+  
+fearNotLetter("abce");
+
+/* --- */
