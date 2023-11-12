@@ -587,6 +587,35 @@ function convertHTML(str) {
   
   convertHTML("Dolce & Gabbana");
 
+// object lookup
+function convertHTML1(str) {
+    // Use Object Lookup to declare as many HTML entities as needed.
+    const htmlEntities = {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&apos;"
+    };
+    // Using a regex, replace characters with it's corresponding html entity
+    return str.replace(/([&<>\"'])/g, match => htmlEntities[match]);
+  }
 
+// object lookup, map
+function convertHTML2(str) {
+    // Use Object Lookup to declare as many HTML entities as needed.
+    const htmlEntities = {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&apos;"
+    };
+    //Use map function to return a filtered str with all entities changed automatically.
+    return str
+      .split("")
+      .map(entity => htmlEntities[entity] || entity)
+      .join("");
+  }
 
   /* --- */
