@@ -625,9 +625,22 @@ function convertHTML2(str) {
   Given a positive integer num, return the sum of all odd Fibonacci numbers that are less than or equal to num.
   */
 
-function sumFibs(num) {
-    return num;
-}
+  function sumFibs(num) {
+    console.log("num:", num);
+    let fibA = 0;
+    let fibB = 1;
+    let fibNumbers = [fibA];
+    while (fibB <= num) {
+      fibNumbers.push(fibB);
+      let fibC = fibA + fibB;
+      fibA = fibB;
+      fibB = fibC;
+    }
+    console.log("fibNumbers:", fibNumbers);
+    let result = fibNumbers.filter(val => val % 2 === 1).reduce((sum, val) => sum + val, 0);
+    console.log("result:", result);
+    return result;
+  }
   
 sumFibs(4);
 
