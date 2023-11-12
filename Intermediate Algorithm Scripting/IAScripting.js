@@ -222,3 +222,22 @@ function whatIsInAName2(collection, source) {
     });
 }
 /* --- */
+
+/* Spinal Tap Case
+Convert a string to spinal case. Spinal case is all-lowercase-words-joined-by-dashes.
+*/
+
+function spinalCase(str) {
+     // Replace low-upper case to low-space-uppercase, put space for every lower uppercase change
+    str = str.replace(/([a-z])([A-Z])/g, "$1 $2");
+
+     // Create a variable for the white space and underscores.
+    var regex = /\s+|_+/g;
+
+    // Replace space and underscore with -
+    return str.replace(regex, "-").toLowerCase();
+}
+  
+spinalCase('This Is Spinal Tap');
+
+  /* --- */
