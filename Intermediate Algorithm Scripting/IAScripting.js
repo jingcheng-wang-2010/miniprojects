@@ -500,3 +500,29 @@ function fearNotLetter1(str) {
   }
 
 /* --- */
+
+/* Sorted Union
+Write a function that takes two or more arrays and returns a new array of unique values in the order of the original provided arrays.
+In other words, all values present from all arrays should be included in their original order, but with no duplicates in the final array.
+The unique numbers should be sorted by their original order, but the final array should not be sorted in numerical order.
+*/
+
+function uniteUnique(...arr) {
+    console.log(arr);
+    let uniqueValues = [];
+    for (let list of arr) {
+        console.log("list:", list);
+        for (let val of list) {
+            console.log("val:", val);
+            if (uniqueValues.indexOf(val) == -1) {
+                uniqueValues.push(val);
+            }
+        }
+    }
+    console.log(uniqueValues);
+    return uniqueValues;
+  }
+  
+  uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
+
+/* --- */
