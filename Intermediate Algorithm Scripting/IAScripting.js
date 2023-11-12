@@ -19,7 +19,7 @@ function sumAll(arr) {
 sumAll([1, 4]);
 
 // Math.min and max
-function sumAll2(arr) {
+function sumAll1(arr) {
     let max = Math.max(arr[0], arr[1]);
     let min = Math.min(arr[0], arr[1]);
     let sumBetween = 0;
@@ -30,7 +30,7 @@ function sumAll2(arr) {
 }
 
 // arithmetic approach
-const sumAll3 = arr => {
+const sumAll2 = arr => {
     // Buckle up everything to one!
     const startNum = arr[0];
     const endNum = arr[1];
@@ -76,7 +76,7 @@ function diffArray(arr1, arr2) {
 diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
 
 // Imperative Solution
-function diffArray2(arr1, arr2) {
+function diffArray1(arr1, arr2) {
   const newArr = [];
 
   function onlyInFirst(first, second) {
@@ -103,7 +103,7 @@ function diffArray3(arr1, arr2) {
 }
 
 // Declarative Solution
-function diffArray4(arr1, arr2) {
+function diffArray3(arr1, arr2) {
     return [...diff(arr1, arr2), ...diff(arr2, arr1)];
   
     function diff(a, b) {
@@ -112,7 +112,7 @@ function diffArray4(arr1, arr2) {
 }
 
 // Declarative Solution, using set
-function diffArray5(arr1, arr2) {
+function diffArray4(arr1, arr2) {
     const difference = new Set(arr1);
     arr2.forEach((ele) =>
       difference.has(ele) ? difference.delete(ele) : difference.add(ele)
@@ -135,5 +135,38 @@ function destroyer(arr, ...args) {
 }
   
 destroyer([1, 2, 3, 1, 2, 3], 2, 3);
+
+
+// procedural, Object.values(arguments).slice(1)
+function destroyer1(arr) {
+    const valsToRemove = Object.values(arguments).slice(1);
+    const filteredArray = [];
+  
+    for (let i = 0; i < arr.length; i++) {
+      let removeElement = false;
+      for (let j = 0; j < valsToRemove.length; j++) {
+        if (arr[i] === valsToRemove[j]) {
+          removeElement = true;
+        }
+      }
+      if (!removeElement) {
+        filteredArray.push(arr[i]);
+      }
+    }
+    return filteredArray;
+  }
+
+// Array.from(arguments), includes() shorten for
+function destroyer2(arr) {
+    const valsToRemove = Array.from(arguments).slice(1);
+    return arr.filter(function(val) {
+      return !valsToRemove.includes(val);
+    });
+}
+
+// super short
+function destroyer3(arr, ...valsToRemove) {
+    return arr.filter(elem => !valsToRemove.includes(elem));
+}
 
 /* --- */
