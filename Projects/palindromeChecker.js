@@ -7,7 +7,24 @@ We'll also pass strings with special symbols, such as 2A3*3a2, 2A3 3a2, and 2_A3
 */
 
 function palindrome(str) {
-    return true;
+    console.log("Starting string:", str)
+    let arr = str
+    .toLowerCase()
+    .split("")
+    .filter(char => char.match(/[a-z0-9]/));
+    console.log("After processing:", arr);
+    let isPalin = true;
+    for (let i = 0; i < Math.floor(arr.length / 2); i++) {
+        console.log("Round:", i);
+        console.log(arr[i],"vs", arr[arr.length-1-i]);
+        if (arr[i] !== arr[arr.length-1-i]) {
+            isPalin = false;
+        }
+    }
+    console.log("isPalin:", isPalin);
+    return isPalin;
   }
-  
-  palindrome("eye");
+
+palindrome("eye");
+
+/* other solutions */
