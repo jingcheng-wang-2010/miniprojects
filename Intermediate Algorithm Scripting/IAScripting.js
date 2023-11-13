@@ -887,4 +887,40 @@ function dropElements(arr, func) {
 
 dropElements([1, 2, 3], function(n) {return n < 3; });
 
+
+//while with shift
+function dropElements1(arr, func) {
+  while (arr.length > 0 && !func(arr[0])) {
+    arr.shift();
+  }
+  return arr;
+}
+
+// use findIndex and func as the checking function
+function dropElements2(arr, func) {
+  let sliceIndex = arr.findIndex(func);
+  return arr.slice(sliceIndex >= 0 ? sliceIndex : arr.length);
+}
+
+// limit loop times to original arr length, keep shifting first item
+function dropElements3(arr, func) {
+  // drop them elements.
+  let originalLen = arr.length;
+  for (let i = 0; i < originalLen; i++) {
+    if (func(arr[0])) {
+      break;
+    } else {
+      arr.shift();
+    }
+  }
+  return arr;
+}
+
+// recursive
+function dropElements4(arr, func) {
+  return arr.length > 0 && !func(arr[0])
+    ? (dropElements4(arr.slice(1), func))
+    : arr;
+}
+
 /* --- */
