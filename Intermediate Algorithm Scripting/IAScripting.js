@@ -1135,4 +1135,28 @@ function addTogether() {
 
 addTogether(2,3);
 
+// shorter
+function addTogether1() {
+  const [first, second] = arguments;
+
+  if (typeof (first) === "number") {
+    if (typeof (second) === "number") return first + second;
+    if (arguments.length === 1) return (second) => addTogether1(first, second);
+  }
+}
+
+// additional function
+function addTogether2() {
+  const [first, second] = arguments;
+
+  function addSecond(second) {
+    if (typeof (second) === "number") return first + second;
+  }
+
+  if (typeof (first) === "number") {
+    if (arguments.length === 1) return addSecond;
+    if (arguments.length === 2) return addSecond(second);
+  }
+}
+
 /* --- */
