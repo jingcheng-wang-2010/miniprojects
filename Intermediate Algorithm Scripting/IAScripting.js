@@ -726,4 +726,39 @@ function sumPrimes(num) {
 
 sumPrimes(10);
 
+// divisible checking: only need to check between 2 and square root of num, because square root of num is the largest possible unique divisor
+function sumPrimes1(num) {
+  // Helper function to check primality
+  function isPrime(num) {
+    const sqrt = Math.sqrt(num);
+    for (let i = 2; i <= sqrt; i++) {
+      if (num % i === 0)
+        return false;
+    }
+    return true;
+  }
+
+  // Check all numbers for primality
+  let sum = 0;
+  for (let i = 2; i <= num; i++) {
+    if (isPrime(i))
+      sum += i;
+  }
+  return sum;
+}
+
+// List of prime numbers
+/*This solution is very similar to Solution 1.
+In this solution we retain a list of all primes found so far and check if any of these numbers divide into each number in our range.
+Note that this solution is actually less efficient than Solution 1 for very large values of n. Frequently growing the size of an array in JavaScript can be inefficient and slow.
+*/
+function sumPrimes2(num) {
+  // Check all numbers for primality
+  let primes = [];
+  for (let i = 2; i <= num; i++) {
+    if (primes.every((prime) => i % prime !== 0))
+      primes.push(i);
+  }
+  return primes.reduce((sum, prime) => sum + prime, 0);
+}
 /* --- */
