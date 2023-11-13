@@ -946,4 +946,50 @@ function steamrollArray(arr) {
 };
 
 steamrollArray([1, [2], [3, [[4]]]]);
+
+
+// spread out current level, check for exisiting array, if so, keep spreading until no more arrays
+function steamrollArray1(arr) {
+  const flat = [].concat(...arr);
+  return flat.some(Array.isArray) ? steamrollArray1(flat) : flat;
+}
+
+// convert to string, remove , and replace [object Object]
+function steamrollArray2(arr) {
+  return arr
+    .toString()
+    .replace(",,", ",") // "1,2,,3" => "1,2,3"
+    .split(",") // ['1','2','3']
+    .map(function(v) {
+      if (v == "[object Object]") {
+        // bring back empty objects
+        return {};
+      } else if (isNaN(v)) {
+        // if not a number (string)
+        return v;
+      } else {
+        return parseInt(v); // if a number in a string, convert it
+      }
+    });
+}
+
+//
+function steamrollArray3(val,flatArr=[]) {
+  val.forEach(item => {
+    if (Array.isArray(item)) steamrollArray3(item, flatArr);
+    else flatArr.push(item);
+  });
+  return flatArr;
+}
+
+//
+function steamrollArray4(arr, flatArr = []) {
+  const elem = arr.pop();
+  return elem
+    ? !Array.isArray(elem)
+      ? steamrollArray4(arr, [elem, ...flatArr])
+      : steamrollArray4(arr.concat(elem), flatArr)
+    : flatArr;
+}
+
 /* --- */
