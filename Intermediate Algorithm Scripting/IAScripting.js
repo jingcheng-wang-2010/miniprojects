@@ -1104,3 +1104,35 @@ function truthCheck3(collection, pre) {
 }
 
 /* --- */
+
+/* Arguments Optional
+Create a function that sums two arguments together. If only one argument is provided, then return a function that expects one argument and returns the sum.
+*/
+
+function addTogether() {
+  if (typeof arguments[0] !== "number") {
+    return undefined;
+  }
+  else if (arguments.length === 2) {
+    if (typeof arguments[1] === "number") {
+      return arguments[0] + arguments[1];
+    }
+    else {
+      return undefined;
+    }
+  }
+  else {
+    return (secondArg) => {
+      if (typeof secondArg === "number") {
+        return arguments[0] + secondArg;
+      }
+      else {
+        return undefined
+      }
+    }
+  }
+}
+
+addTogether(2,3);
+
+/* --- */
