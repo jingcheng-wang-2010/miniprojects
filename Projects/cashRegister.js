@@ -27,8 +27,12 @@ function checkCashRegister(price, cash, cid) {
     if (totalCID < changeRemain) { 
         return {status: "INSUFFICIENT_FUNDS", change: []}
     };
-    let change;
-    return change;
+    for (let i = cid.length-1; i < -1; i--) {
+        if (cid[i][1] < changeRemain) {
+          changeRemain -= cid[i][1];
+        }
+      }
+      return changeAmount;
   }
   
   checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]);
