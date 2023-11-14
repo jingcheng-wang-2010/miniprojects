@@ -19,29 +19,72 @@ function telephoneCheck(str) {
       // check if all brackets are opened and closed properly
       let bracketOpen = [...str.matchAll(/\(/g)];
       let bracketClose = [...str.matchAll(/\)/g)];
-      // if number of open brackets and closed brackets are the same
-      if (bracketOpen.length === bracketClose.length) {
-        for (let i = 0; i < bracketOpen.length; i++) {
-          if (bracketOpen[i] > bracketClose[i]) {
-            return false;
-          }
+      //console.log("CB | bracketOpen:", bracketOpen);
+      //console.log("CB | bracketClose:", bracketClose);
+      // if no brackets present
+      if (bracketOpen.length === 0 && bracketClose.length === 0) {
+        return true;
+      }
+      // only 1 set of brackets is valid
+      if (bracketOpen.length === 1 && bracketClose.length === 1) {
+        // check if the numbers between brackets are 3 digits
+        if (bracketClose[0].index - bracketOpen[0].index !== 4) {
+          return false;
         }
         return true;
       }
       return false;
     }
-    console.log("checkBrackets:", checkBrackets(str));
+    
     
     function checkInvalidChar(str) {
-      let regex = /[^0-9\-\s\(\)]/;
-      console.log("checkInvalidChar:", regex.test(str));
+      // first test for invalid characters
+      let regexInvalid = /[^0-9\-\s\(\)]/;
+      // second test for first character is valid
+      if (regexInvalid.test(str) === false) {
+        let regexFirst = /[0-9\(]/;
+        return regexFirst.test(str[0]);
+      }
+      return false;
     }
-    
-    if(checkInvalidChar(str)) { return false; };
   
+    function checkPhoneNumber(str) {
+      let processed = str.slice()
+      .split("")
+      .filter(digit => digit.match(/[0-9]/))
+      .join("");
+      console.log("CPN | processed:", processed);
+      if (processed.length === 11) {
+        console.log("11 digits, must include country code");
+        return (processed[0] === "1");
+      } else if (processed.length === 10) {
+        console.log("10 digits, no country code");
+        let splitNums = str.split(/[^0-9]/);
+        console.log("CPN | splitNums:", splitNums);
+        if (splitNums.length === 1) {
+          return true;
+        }
+        if (splitNums[0] === "") {
+          splitNums.shift();
+        }
+        console.log("CPN | splitNums:", splitNums);
+        if (splitNums[0].length !== 3) {
+          return false;
+        }
+        return true;
+      } else {
+        return false;
+      }
+    }
+  
+    if(!checkInvalidChar(str)) { return false; };
     if (!checkBrackets(str)) { return false; }
+    console.log("checkInvalidChar:", checkInvalidChar(str));
+    console.log("checkBrackets:", checkBrackets(str));
+    console.log("checkPhoneNumber: ", checkPhoneNumber(str));
   
-    return true;
+  
+    return checkPhoneNumber(str);
   }
   
 telephoneCheck("555-555-5555");
