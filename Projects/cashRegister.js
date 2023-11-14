@@ -22,6 +22,11 @@ function checkCashRegister(price, cash, cid) {
     };
     let changeRemain = cash - price;
     console.log("changeRemain:", changeRemain);
+    const totalCID = Math.round(cid.reduce((sum, unit) => sum + unit[1], 0) * 100) / 100;
+    console.log("totalCID:", totalCID);
+    if (totalCID < changeRemain) { 
+        return {status: "INSUFFICIENT_FUNDS", change: []}
+    };
     let change;
     return change;
   }
