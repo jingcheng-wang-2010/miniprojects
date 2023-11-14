@@ -20,6 +20,8 @@ function checkCashRegister(price, cash, cid) {
         "TWENTY": 20,
         "ONE HUNDRED": 100
     };
+    let changeRemain = cash - price;
+    console.log("changeRemain:", changeRemain);
     let change;
     return change;
   }
