@@ -16,8 +16,21 @@
       font-size: 20px;
     }
   }
-</style>
+  @mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+  }
 
+  #awesome {
+    width: 150px;
+    height: 150px;
+    background-color: green;
+    @include border-radius(15px);
+  }
+</style>
+<div id="awesome"></div>
 <h1 class="header">Learn Sass</h1>
 <div class="blog-post">
   <h1>Blog Title</h1>
