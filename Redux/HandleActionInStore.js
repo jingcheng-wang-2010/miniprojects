@@ -8,7 +8,7 @@ const defaultState = {
       return {login: true};
     }
     else {
-      return defaultState;
+      return state;
     }
     
     // Change code above this line
