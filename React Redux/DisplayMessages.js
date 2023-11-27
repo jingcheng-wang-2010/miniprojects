@@ -7,8 +7,15 @@ class DisplayMessages extends React.Component {
         messages: []
       }
     };
-    // Change code above this line
+    // Add handleChange() and submitMessage() methods here
     render() {
-      return <div />
+      return (
+        <div>
+            <h2>Type in a new Message:</h2>
+            { /* Render an input, button, and ul below this line */ }
+
+            { /* Change code above this line */ }
+        </div>
+      )
     }
   };
