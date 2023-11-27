@@ -26,10 +26,13 @@ class DisplayMessages extends React.Component {
       <div>
         <h2>Type in a new Message:</h2>
         { /* Render an input, button, and ul below this line */ }
-        <div>{this.state.input}</div>
+
         <input onChange={this.handleChange.bind(this)} value={this.state.input} />
         <button onClick={this.submitMessage.bind(this)}>Submit</button>
-        <ul></ul>
+        <ul>
+          {this.state.messages.map((x, i)=>{
+            return <li key={i}>{x}</li>
+          })}</ul>
         { /* Change code above this line */ }
       </div>
     );
