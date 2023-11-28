@@ -75,6 +75,10 @@ const Provider = ReactRedux.Provider;
 
 class AppWrapper extends React.Component {
   // Render the Provider below this line
-
+  render(){
+    <Provider store={store}>
+      <DisplayMessages/>
+    </Provider>
+  }
   // Change code above this line
 };
