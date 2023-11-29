@@ -9,6 +9,8 @@ const addMessage = (message) => {
   
   const mapDispatchToProps = (dispatch) => {
     return {
-      submitNewMessage: dispatch
+      submitNewMessage: (message) => {
+        dispatch(addMessage(message))
+      }
     }
   }
