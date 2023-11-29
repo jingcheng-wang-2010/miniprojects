@@ -6,3 +6,9 @@ const addMessage = (message) => {
   };
   
   // Change code below this line
+  
+  const mapDispatchToProps = (dispatch) => {
+    return {
+      submitNewMessage: dispatch
+    }
+  }
