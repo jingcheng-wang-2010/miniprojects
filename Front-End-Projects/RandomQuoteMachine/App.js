@@ -6,6 +6,17 @@ import ReactDOM from "https://esm.sh/react-dom"
 
 //import rootReducer from './redux/reducers'
 
+const quotes = () => {
+    fetch("https://type.fit/api/quotes")
+    .then(function(response) {
+      return response.json();
+    });
+    //.then(function(data) {
+    //  console.log(data);
+    //});
+  }
+  console.log(quotes);
+
 class App extends React.Component {
     constructor(props){
         super(props);
