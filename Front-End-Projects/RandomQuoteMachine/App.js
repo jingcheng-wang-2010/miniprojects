@@ -25,8 +25,8 @@ class App extends React.Component {
         return (
             <div>
                 <div id="quote-box">
-                    <p id="text">text</p>
-                    <p id="author">author</p>
+                <p id="text">{this.quotes[0].text}</p>
+                    <p id="author">{quotes[0].author}</p>
                     <button id="new-quote">New Quote</button>
                     <a id="tweet-quote">tweet this</a>
                 </div>
