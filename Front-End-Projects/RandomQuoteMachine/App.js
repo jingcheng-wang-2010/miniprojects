@@ -15,7 +15,7 @@ const quotes = () => {
     //  console.log(data);
     //});
   }
-  console.log(quotes);
+  //console.log(quotes);
 
 class App extends React.Component {
     constructor(props){
