@@ -69,19 +69,53 @@ const quotes = [
   }
 ]
 
+const getColorTheme = () => {
+  const red = Math.floor(Math.random() * 256)
+  const green = Math.floor(Math.random() * 256)
+  const blue = Math.floor(Math.random() * 256)
+  return 'rgb(' + red + ', ' + green + ', ' + blue + ')'
+}
+
+const randomColorTheme = getColorTheme()
+document.body.style.backgroundColor = randomColorTheme
+document.body.style.color = randomColorTheme
+
+const getRandomQuote = (list) => {
+  return list[Math.floor(Math.random() * list.length)];
+}
+
+const randomQuote = getRandomQuote(quotes);
+
 function App () {
   return (
     <div>
       <div id='quote-box'>
-        <div className='quote-text'>
-          <span id='text'>{quotes[0].text}</span>
+        <div className='quote-text' style={{ color: randomColorTheme }}>
+          <i class='fa fa-quote-left'> </i>{' '}
+          <span id='text'>{randomQuote.text}</span>
         </div>
-        <div className='quote-author'>
-          <span id='author'>- {quotes[0].author.split(',')[0]}</span>
+        <div className='quote-author' style={{ color: randomColorTheme }}>
+          <span id='author'>- {randomQuote.author.split(',')[0]}</span>
         </div>
-        <button id='new-quote'>New Quote</button>
-        <a id='tweet-quote'>tweet this</a>
+        <div className='buttons'>
+          <a
+            id='tweet-quote'
+            className='button'
+            title='Tweet this quote!'
+            style={{ backgroundColor: randomColorTheme }}
+          >
+            <i class='fa fa-twitter'></i>
+          </a>
+          <button
+            id='new-quote'
+            className='button'
+            style={{ backgroundColor: randomColorTheme }}
+          >
+            New Quote
+          </button>
+        </div>
       </div>
+      <div className="footer">by <a href="https://codepen.io/jingchengwang">Jing</a></div>
     </div>
   )
 }
