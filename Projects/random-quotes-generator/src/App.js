@@ -76,48 +76,68 @@ const getColorTheme = () => {
   return 'rgb(' + red + ', ' + green + ', ' + blue + ')'
 }
 
-const randomColorTheme = getColorTheme()
-document.body.style.backgroundColor = randomColorTheme
-document.body.style.color = randomColorTheme
-
-const getRandomQuote = (list) => {
-  return list[Math.floor(Math.random() * list.length)];
+const getRandomQuote = list => {
+  return list[Math.floor(Math.random() * list.length)]
 }
 
-const randomQuote = getRandomQuote(quotes);
+class App extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      colorTheme: getColorTheme(),
+      quote: getRandomQuote(quotes)
+    }
+    this.renderNewQuote = this.renderNewQuote.bind(this)
+  }
 
-function App () {
-  return (
-    <div>
-      <div id='quote-box'>
-        <div className='quote-text' style={{ color: randomColorTheme }}>
-          <i class='fa fa-quote-left'> </i>{' '}
-          <span id='text'>{randomQuote.text}</span>
-        </div>
-        <div className='quote-author' style={{ color: randomColorTheme }}>
-          <span id='author'>- {randomQuote.author.split(',')[0]}</span>
-        </div>
-        <div className='buttons'>
-          <a
-            id='tweet-quote'
-            className='button'
-            title='Tweet this quote!'
-            style={{ backgroundColor: randomColorTheme }}
+  renderNewQuote () {
+    this.setState(() => ({
+      colorTheme: getColorTheme(),
+      quote: getRandomQuote(quotes)
+    }))
+  }
+
+  render () {
+    document.body.style.backgroundColor = this.state.colorTheme
+    document.body.style.color = this.state.colorTheme
+    return (
+      <div>
+        <div id='quote-box'>
+          <div className='quote-text' style={{ color: this.state.colorTheme }}>
+            <i class='fa fa-quote-left'> </i>{' '}
+            <span id='text'>{this.state.quote.text}</span>
+          </div>
+          <div
+            className='quote-author'
+            style={{ color: this.state.colorTheme }}
           >
-            <i class='fa fa-twitter'></i>
-          </a>
-          <button
-            id='new-quote'
-            className='button'
-            style={{ backgroundColor: randomColorTheme }}
-          >
-            New Quote
-          </button>
+            <span id='author'>- {this.state.quote.author.split(',')[0]}</span>
+          </div>
+          <div className='buttons'>
+            <a
+              id='tweet-quote'
+              className='button'
+              title='Tweet this quote!'
+              style={{ backgroundColor: this.state.colorTheme }}
+            >
+              <i class='fa fa-twitter'></i>
+            </a>
+            <button
+              id='new-quote'
+              className='button'
+              style={{ backgroundColor: this.state.colorTheme }}
+              onClick={this.renderNewQuote}
+            >
+              New Quote
+            </button>
+          </div>
+        </div>
+        <div className='footer'>
+          by <a href='https://codepen.io/jingchengwang'>Jing</a>
         </div>
       </div>
-      <div className="footer">by <a href="https://codepen.io/jingchengwang">Jing</a></div>
-    </div>
-  )
+    )
+  }
 }
 
 export default App
