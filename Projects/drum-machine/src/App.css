@@ -1,0 +1,45 @@
+body {
+    background-color: #746a4a;
+    font-family: Russo One;
+}
+
+#root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#drum-machine {
+    border: 3px solid #ec4b4b;
+    background-color: #cfc6a8;
+    position: relative;
+}
+#display {
+    background-color: burlywood;
+    width: 332px;
+    height: 80px;
+    margin: 10px auto 0 auto;
+}
+
+.pad-container {
+    width: 332px;
+    height: 272px;
+    display: inline-block;
+    margin: 20px;
+}
+
+.drum-pad {
+    background-color: burlywood;
+    margin-top: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    box-shadow: black 3px 3px 5px;
+    position: relative;
+    float: left;
+    width: 100px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
