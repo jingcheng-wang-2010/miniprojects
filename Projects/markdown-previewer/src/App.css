@@ -1,0 +1,81 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+  background: #daad86;
+  margin: 10px 0;
+}
+
+.editorWrap {
+  max-width: 600px;
+}
+
+.editorWrap .toolbar {
+  width: 99%;
+}
+
+.editorWrap textarea {
+  width: 99%;
+  min-height: 200px;
+  margin-bottom: -5px;
+  resize: vertical;
+  outline: none;
+  padding-left: 5px;
+  padding-top: 5px;
+  font-size: 0.875rem;
+}
+
+.previewWrap {
+  max-width: 800px;
+  margin: 1.25rem auto;
+  min-height: 200px;
+  overflow-wrap: break-word;
+}
+
+#preview {
+  padding: 0 1rem;
+}
+
+.editorWrap,
+.previewWrap {
+  margin: 1.125rem auto;
+  border: 1px solid #212529;
+}
+
+.previewWrap,
+.editorWrap textarea {
+  background-color: #fbeec1;
+  border: 1px solid #1d2f2f;
+  box-shadow: 1px 1px 10px 2px #4b3d2a;
+  border-top: none;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  background-color: #bc986a;
+  padding: 0.3rem;
+  border: 1px solid #1d2f2f;
+  box-shadow: 1px 1px 10px 2px #4b3d2a;
+  font-family: Russo One;
+  font-size: 1rem;
+  color: black;
+}
+
+.toolbar i {
+  width: 25px;
+  margin-left: 5px;
+}
+
+.toolbar .fa-arrows-alt {
+  margin-left: auto;
+}
+
+.fa-free-code-camp {
+  margin-right: 3px;
+}
