@@ -1,38 +1,54 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+//import React from 'react'
+//import ReactDOM from 'react-dom/client'
+import React, {useState, useEffect} from 'react';
 import './App.css'
 
-class App extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      display: ''
-    }
-    this.handleClick = this.handleClick.bind(this)
-  }
+const App = () => {
+  const [display, setDisplay] = useState('')
 
   // event handler for when drum pad button is clicked
-  handleClick (e) {
-    this.setState(() => ({
-      // update display text
-      display: e.target.value
-    }))
+  const handleClick = (e) => {
+    // update display text
+    setDisplay(e.target.value)
     //play audio linked to the drum pad button
     const audio = new Audio(e.target.firstChild.src);
     audio.play();
   }
-  render () {
+
+  useEffect(() => {
+    window.addEventListener('keypress', (event) => {
+      var keyPressed = event.key;
+      switch (keyPressed) {
+        case 'q':
+        case 'w':
+        case 'e':
+        case 'a':
+        case 's':
+        case 'd':
+        case 'z':
+        case 'x':
+        case 'c':
+          setDisplay(document.getElementById(keyPressed.toUpperCase()).parentElement.value);
+          const audio = new Audio(document.getElementById(keyPressed.toUpperCase()).src);
+          audio.play();
+          break;
+        default:
+          break;
+      }   
+    }, false);
+  });
+
     return (
       <div className='App'>
         <div id='drum-machine'>
           <div id='display-container'>
             <p id='display'>
-              {this.state.display}
+              {display}
             </p>
             </div>
           <div className='pad-container'>
             <div className='drum-pad'>
-              <button id="Heater-1" value='Heater-1' onClick={this.handleClick}>
+              <button id="Heater-1" value='Heater-1' onClick={handleClick}>
                 <audio
                   className='clip' 
                   id="Q" 
@@ -42,7 +58,7 @@ class App extends React.Component {
               </button>
             </div>
             <div className='drum-pad'>
-              <button id="Heater-2" value='Heater-2' onClick={this.handleClick}>
+              <button id="Heater-2" value='Heater-2' onClick={handleClick}>
                 <audio
                   className='clip'
                   id="W" 
@@ -52,7 +68,7 @@ class App extends React.Component {
               </button>
             </div>
             <div className='drum-pad'>
-              <button id="Heater-3" value='Heater-3' onClick={this.handleClick}>
+              <button id="Heater-3" value='Heater-3' onClick={handleClick}>
                 <audio
                   className='clip'
                   id="E" 
@@ -62,7 +78,7 @@ class App extends React.Component {
               </button>
             </div>
             <div className='drum-pad'>
-              <button id="Heater-4" value='Heater-4' onClick={this.handleClick}>
+              <button id="Heater-4" value='Heater-4' onClick={handleClick}>
                 <audio
                   className='clip'
                   id="A" 
@@ -72,7 +88,7 @@ class App extends React.Component {
               </button>
             </div>
             <div className='drum-pad'>
-              <button id="Clap" value='Clap' onClick={this.handleClick}>
+              <button id="Clap" value='Clap' onClick={handleClick}>
                 <audio
                   className='clip'
                   id="S" 
@@ -82,7 +98,7 @@ class App extends React.Component {
               </button>
             </div>
             <div className='drum-pad'>
-              <button id="Open-HH" value='Open-HH' onClick={this.handleClick}>
+              <button id="Open-HH" value='Open-HH' onClick={handleClick}>
                 <audio
                   className='clip'
                   id="D" 
@@ -92,7 +108,7 @@ class App extends React.Component {
               </button>
             </div>
             <div className='drum-pad'>
-              <button id="Kick-n'-Hat" value="Kick-n'-Hat" onClick={this.handleClick}>
+              <button id="Kick-n'-Hat" value="Kick-n'-Hat" onClick={handleClick}>
                 <audio
                   className='clip'
                   id="Z" 
@@ -102,7 +118,7 @@ class App extends React.Component {
               </button>
             </div>
             <div className='drum-pad'>
-              <button id="Kick" value='Kick' onClick={this.handleClick}>
+              <button id="Kick" value='Kick' onClick={handleClick}>
                 <audio
                   className='clip'
                   id="X" 
@@ -112,7 +128,7 @@ class App extends React.Component {
               </button>
             </div>
             <div className='drum-pad'>
-              <button id="Closed-HH" value='Closed-HH' onClick={this.handleClick}>
+              <button id="Closed-HH" value='Closed-HH' onClick={handleClick}>
                 <audio
                   className='clip'
                   id="C" 
@@ -126,6 +142,27 @@ class App extends React.Component {
       </div>
     )
   }
-}
+
+/*
+    // event handler for when keyboard is clicked
+    useEffect(() => {
+      window.addEventListener('keypress', (event) => {
+        var keyPressed = event.key;
+        switch (keyPressed) {
+          'Q':
+      
+          'W':
+      
+          'E':
+      
+          'A':
+      
+          default:
+            break
+        }
+        // Alert the key name and key code on keydown
+        alert(`Key pressed ${name} \r\n Key code value: ${code}`);
+      }, false);
+    };*/
 
 export default App
