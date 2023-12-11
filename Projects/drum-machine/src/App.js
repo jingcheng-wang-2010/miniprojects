@@ -15,37 +15,42 @@ const App = () => {
     audio.play()
   }
 
+  const useKeyDown = (callback, keys) => {
+    const onKeyDown = (event) => {
+      var keyPressed = event.key
+      switch (keyPressed) {
+        case 'q':
+        case 'w':
+        case 'e':
+        case 'a':
+        case 's':
+        case 'd':
+        case 'z':
+        case 'x':
+        case 'c':
+          setDisplay(
+            document.getElementById(keyPressed.toUpperCase()).parentElement
+              .value
+          )
+          const audio = new Audio(
+            document.getElementById(keyPressed.toUpperCase()).src
+          )
+          alert(document.getElementById(keyPressed.toUpperCase()).src)
+          audio.play()
+          break
+        default:
+          break
+    }
+  }
+
   useEffect(() => {
-    window.addEventListener(
-      'keypress',
-      event => {
-        var keyPressed = event.key
-        switch (keyPressed) {
-          case 'q':
-          case 'w':
-          case 'e':
-          case 'a':
-          case 's':
-          case 'd':
-          case 'z':
-          case 'x':
-          case 'c':
-            setDisplay(
-              document.getElementById(keyPressed.toUpperCase()).parentElement
-                .value
-            )
-            const audio = new Audio(
-              document.getElementById(keyPressed.toUpperCase()).src
-            )
-            audio.play()
-            break
-          default:
-            break
-        }
-      },
-      false
-    )
-  })
+    document.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.removedEventListener('keydown', onKeyDown);
+    }
+  }, [onKeyDown]);
+}
+      
 
   return (
     <div className='App'>
@@ -176,27 +181,5 @@ const App = () => {
     </div>
   )
 }
-
-/*
-    // event handler for when keyboard is clicked
-    useEffect(() => {
-      window.addEventListener('keypress', (event) => {
-        var keyPressed = event.key;
-        switch (keyPressed) {
-          'Q':
-      
-          'W':
-      
-          'E':
-      
-          'A':
-      
-          default:
-            break
-        }
-        // Alert the key name and key code on keydown
-        alert(`Key pressed ${name} \r\n Key code value: ${code}`);
-      }, false);
-    };*/
 
 export default App
