@@ -15,12 +15,20 @@ body {
     background-color: #cfc6a8;
     position: relative;
 }
-#display {
-    background-color: burlywood;
+#display-container {
     width: 332px;
     height: 80px;
     margin: 10px auto 0 auto;
+    background-color: burlywood;
 }
+#display {
+    text-align: center;
+    vertical-align: middle;
+    font-size: 2em;
+    line-height: 80px;
+    
+}
+
 
 .pad-container {
     width: 332px;
@@ -29,7 +37,7 @@ body {
     margin: 20px;
 }
 
-.drum-pad {
+.drum-pad button{
     background-color: burlywood;
     margin-top: 10px;
     margin-right: 10px;
