@@ -9,14 +9,14 @@ const App = () => {
   // event handler for when drum pad button is clicked
   const handleClick = e => {
     // update display text
-    setDisplay(e.target.value)
+    setDisplay(e.target.id)
     //play audio linked to the drum pad button
     const audio = new Audio(e.target.firstChild.src)
     audio.play()
   }
 
-  const useKeyDown = (callback, keys) => {
-    const onKeyDown = (event) => {
+  //const useKeyDown = (callback, keys) => {
+    const onKeyDown = event => {
       var keyPressed = event.key
       switch (keyPressed) {
         case 'q':
@@ -30,26 +30,27 @@ const App = () => {
         case 'c':
           setDisplay(
             document.getElementById(keyPressed.toUpperCase()).parentElement
-              .value
+              .id
           )
           const audio = new Audio(
             document.getElementById(keyPressed.toUpperCase()).src
           )
-          alert(document.getElementById(keyPressed.toUpperCase()).src)
+          //alert(document.getElementById(keyPressed.toUpperCase()).src)
           audio.play()
           break
         default:
           break
     }
-  }
+  };
+  //}
 
   useEffect(() => {
     document.addEventListener('keydown', onKeyDown);
     return () => {
-      document.removedEventListener('keydown', onKeyDown);
+      document.removeEventListener('keydown', onKeyDown);
     }
   }, [onKeyDown]);
-}
+
       
 
   return (
@@ -59,7 +60,7 @@ const App = () => {
           <p id='display'>{display}</p>
         </div>
         <div className='pad-container'>
-          <button
+          <div
             className='drum-pad'
             id='Heater-1'
             value='Heater-1'
@@ -67,12 +68,12 @@ const App = () => {
           >
             <audio
               className='clip'
-              id='Q'
+              id="Q"
               src='https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3'
             ></audio>
             Q
-          </button>
-          <button
+          </div>
+          <div
             className='drum-pad'
             id='Heater-2'
             value='Heater-2'
@@ -84,8 +85,8 @@ const App = () => {
               src='https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3'
             ></audio>
             W
-          </button>
-          <button
+          </div>
+          <div
             className='drum-pad'
             id='Heater-3'
             value='Heater-3'
@@ -97,8 +98,8 @@ const App = () => {
               src='https://s3.amazonaws.com/freecodecamp/drums/Heater-3.mp3'
             ></audio>
             E
-          </button>
-          <button
+          </div>
+          <div
             className='drum-pad'
             id='Heater-4'
             value='Heater-4'
@@ -110,8 +111,8 @@ const App = () => {
               src='https://s3.amazonaws.com/freecodecamp/drums/Heater-4_1.mp3'
             ></audio>
             A
-          </button>
-          <button
+          </div>
+          <div
             className='drum-pad'
             id='Clap'
             value='Clap'
@@ -123,8 +124,8 @@ const App = () => {
               src='https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3'
             ></audio>
             S
-          </button>
-          <button
+          </div>
+          <div
             className='drum-pad'
             id='Open-HH'
             value='Open-HH'
@@ -136,8 +137,8 @@ const App = () => {
               src='https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3'
             ></audio>
             D
-          </button>
-          <button
+          </div>
+          <div
             className='drum-pad'
             id="Kick-n'-Hat"
             value="Kick-n'-Hat"
@@ -149,8 +150,8 @@ const App = () => {
               src='https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3'
             ></audio>
             Z
-          </button>
-          <button
+          </div>
+          <div
             className='drum-pad'
             id='Kick'
             value='Kick'
@@ -162,8 +163,8 @@ const App = () => {
               src='https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3'
             ></audio>
             X
-          </button>
-          <button
+          </div>
+          <div
             className='drum-pad'
             id='Closed-HH'
             value='Closed-HH'
@@ -175,7 +176,7 @@ const App = () => {
               src='https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3'
             ></audio>
             C
-          </button>
+          </div>
         </div>
       </div>
     </div>

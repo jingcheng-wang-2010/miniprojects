@@ -51,3 +51,12 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+.drum-pad:hover {
+    background-color: rgb(202, 149, 80);
+}
+
+.drum-pad:active {
+    background-color: #e6dbdb;
+    color: rgb(202, 149, 80)
+}
