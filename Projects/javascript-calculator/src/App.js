@@ -4,9 +4,26 @@ import React, { useState, useEffect } from 'react'
 function App() {
   const [display, setDisplay] = useState('0')
   const [operator, setOperator] = useState('')
-  const [value1, setValue1] = useState(0)
-  const [value2, setValue2] = useState(null)
+  const [value1, setValue1] = useState(null)
+  //const [value2, setValue2] = useState(null)
   const [newValue, setNewValue] = useState(true)
+
+  const processOperator = (v1, opt, v2) => {
+    const result = 0;
+    if (operator === "divide") {
+      result = v1 / v2;
+    }
+    else if (operator === "multiply") {
+      result = v1 * v2;
+    } 
+    else if (operator === "subtract") {
+      result = v1 - v2;
+    } 
+    else if (operator === "add") {
+      result = v1 + v2;
+    }
+    return result;
+  }
 
   const handleClick = e => {
     switch (e.target.id) {
@@ -43,24 +60,13 @@ function App() {
       case "equals":
         if (value1 === 0) {
           setValue1(Number(display));
-          if (e.target.id !== 'equals') {
-            setDisplay(e.target.innerText);
-            setOperator(e.target.id);
-          }
         }
         else {
-          if (operator === "divide") {
-            setDisplay(value1 / Number(display))
-          }
-          else if (operator === "multiply") {
-            setDisplay(value1 * Number(display))
-          } 
-          else if (operator === "subtract") {
-            setDisplay(value1 - Number(display))
-          } 
-          else if (operator === "add") {
-            setDisplay(value1 + Number(display))
-          }
+          const value2 = processOperator(value1, operator, Number(display));
+          setDisplay(value2);
+          setValue1(value2);
+        }
+        if (e.target.id !== 'equals') {
           setOperator(e.target.id);
         }
         setNewValue(true);
