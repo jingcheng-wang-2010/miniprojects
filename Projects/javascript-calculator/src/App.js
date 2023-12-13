@@ -3,6 +3,10 @@ import React, { useState, useEffect } from 'react'
 
 function App() {
   const [display, setDisplay] = useState('0')
+  const [operator, setOperator] = useState('')
+  const [value1, setValue1] = useState(0)
+  const [value2, setValue2] = useState(null)
+  const [newValue, setNewValue] = useState(true)
 
   const handleClick = e => {
     switch (e.target.id) {
@@ -16,16 +20,57 @@ function App() {
       case "eight":
       case "nine":
       case "zero":
-        if (display === '0') {
-          setDisplay(e.target.innerText);
+        //if (display === '0' || display === '/' || display === 'X' || display === '+' || display === '-') {
+        if (newValue === true) {
+          setDisplay(e.target.innerText)
+          console.log('1 Display:', display);
+          if (e.target.innerText !== '0') {
+            setNewValue(false);
+            console.log('1-1');
+          }
         }
         else {
           setDisplay(display + e.target.innerText);
+          console.log('2 Display:', display);
         }
         //alert(display);
         break;
-      case "clear":
-        setDisplay('0');
+      
+      case "divide":
+      case "multiply":
+      case "subtract":
+      case "add":
+      case "equals":
+        if (value1 === 0) {
+          setValue1(Number(display));
+          if (e.target.id !== 'equals') {
+            setDisplay(e.target.innerText);
+            setOperator(e.target.id);
+          }
+        }
+        else {
+          if (operator === "divide") {
+            setDisplay(value1 / Number(display))
+          }
+          else if (operator === "multiply") {
+            setDisplay(value1 * Number(display))
+          } 
+          else if (operator === "subtract") {
+            setDisplay(value1 - Number(display))
+          } 
+          else if (operator === "add") {
+            setDisplay(value1 + Number(display))
+          }
+          setOperator(e.target.id);
+        }
+        setNewValue(true);
+        break;
+      
+        case "clear":
+          setDisplay('0');
+          setNewValue(true);
+          setValue1(0);
+          break;
       default:
         break;
     }
