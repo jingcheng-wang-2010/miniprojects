@@ -8,7 +8,7 @@ function App() {
   //const [value2, setValue2] = useState(null)
   const [newValue, setNewValue] = useState(true)
 
-  const processOperator = (v1, opt, v2) => {
+  const processEquation = (v1, opt, v2) => {
     var result = 0;
     if (opt === "divide") {
       result = v1 / v2;
@@ -69,20 +69,22 @@ function App() {
       case "multiply":
       case "subtract":
       case "add":
-      case "equals":
         if (value1 === null) {
           setValue1(Number(display));
         }
         else {
-          const value2 = processOperator(value1, operator, Number(display));
+          const value2 = processEquation(value1, operator, Number(display));
           setDisplay(value2);
           setValue1(value2);
         }
-        if (e.target.id !== 'equals') {
-          setOperator(e.target.id);
-        }
-        else {
-          setValue1(null);
+        setOperator(e.target.id);
+        setNewValue(true);
+        break;
+      case "equals":
+        if (value1 !== null) {
+          const value2 = processEquation(value1, operator, Number(display));
+          setDisplay(value2);
+          setValue1(value2);
         }
         setNewValue(true);
         break;
