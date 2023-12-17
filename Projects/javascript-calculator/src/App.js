@@ -1,11 +1,11 @@
 import './App.css';
-import React, { useState, useEffect } from 'react'
+import React, { useState} from 'react'
 
 function App() {
   const [display, setDisplay] = useState('0')
   const [operator, setOperator] = useState('')
   const [value1, setValue1] = useState(null)
-  //const [value2, setValue2] = useState(null)
+  const [value2, setValue2] = useState(null)
   const [newValue, setNewValue] = useState(true)
 
   const processEquation = (v1, opt, v2) => {
@@ -41,15 +41,17 @@ function App() {
         //if (display === '0' || display === '/' || display === 'X' || display === '+' || display === '-') {
         if (newValue === true) {
           setDisplay(e.target.innerText)
-          console.log('1 Display:', display);
           if (e.target.innerText !== '0') {
             setNewValue(false);
-            console.log('1-1');
+          }
+          if (value1 !== null && operator !== "" && value2 !== null) {
+            setValue1(null);
+            setOperator("");
+            setValue2(null);
           }
         }
         else {
           setDisplay(display + e.target.innerText);
-          console.log('2 Display:', display);
         }
         //alert(display);
         break;
@@ -72,26 +74,41 @@ function App() {
         if (value1 === null) {
           setValue1(Number(display));
         }
-        else {
-          const value2 = processEquation(value1, operator, Number(display));
-          setDisplay(value2);
-          setValue1(value2);
+        else if (newValue === false) {
+          setValue2(Number(display));
+          const result = processEquation(value1, operator, Number(display));
+          setDisplay(result);
+          setValue1(result);
         }
         setOperator(e.target.id);
         setNewValue(true);
         break;
       case "equals":
-        if (value1 !== null) {
-          const value2 = processEquation(value1, operator, Number(display));
-          setDisplay(value2);
-          setValue1(value2);
+        console.log("Value1:",value1);
+        console.log("Value2:",value2);
+        console.log("operator:",operator);
+        console.log("display:",display);
+        if (value1 !== null && operator !== "") {
+          if (value2 === null) {
+            setValue2(Number(display));
+            const result = processEquation(value1, operator, Number(display));
+            setDisplay(result);
+            setValue1(result);
+          }
+          else {
+            const result = processEquation(value1, operator, value2);
+            setDisplay(result);
+            setValue1(result);
+          }
         }
         setNewValue(true);
         break;
       case "clear":
           setDisplay('0');
           setNewValue(true);
-          setValue1(0);
+          setValue1(null);
+          setValue2(null);
+          setOperator('');
           break;
       default:
         break;
