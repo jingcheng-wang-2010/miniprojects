@@ -1,12 +1,26 @@
 import './App.css';
-import React, { useState} from 'react'
+import React, { useState, useEffect} from 'react'
 
 function App() {
   const [display, setDisplay] = useState('0')
-  const [operator, setOperator] = useState('')
+  const [operator, setOperator] = useState(null)
   const [value1, setValue1] = useState(null)
   const [value2, setValue2] = useState(null)
   const [newValue, setNewValue] = useState(true)
+  const [lastInput, setLastInput] = useState(null);
+  const [makeNegative, setMakeNegative] = useState(false);
+
+  function debug() {
+    //React.useEffect (() => {
+      console.log("display:",display);
+      console.log("Value1:",value1);
+      console.log("Value2:",value2);
+      console.log("operator:",operator);
+      console.log("newValue:",newValue);
+      console.log("lastInput:",lastInput);
+      console.log("makeNegative:",makeNegative);
+    //}, [display, value1, value2, operator, newValue, lastInput])
+  }
 
   const processEquation = (v1, opt, v2) => {
     var result = 0;
@@ -40,11 +54,17 @@ function App() {
       
         //if (display === '0' || display === '/' || display === 'X' || display === '+' || display === '-') {
         if (newValue === true) {
-          setDisplay(e.target.innerText)
+          if (makeNegative === true && e.target.innerText !== '0'){
+            setDisplay("-"+e.target.innerText);
+            setMakeNegative(false);
+          }
+          else {
+            setDisplay(e.target.innerText)
+          }
           if (e.target.innerText !== '0') {
             setNewValue(false);
           }
-          if (value1 !== null && operator !== "" && value2 !== null) {
+          if (lastInput === "equals") {
             setValue1(null);
             setOperator("");
             setValue2(null);
@@ -53,7 +73,7 @@ function App() {
         else {
           setDisplay(display + e.target.innerText);
         }
-        //alert(display);
+        setLastInput("number");
         break;
       case "decimal":
         console.log(display);
@@ -66,11 +86,13 @@ function App() {
         else if (display.indexOf(".") === -1) {
           setDisplay(display + e.target.innerText);
         }
+        setLastInput("decimal");
         break;
       case "divide":
       case "multiply":
       case "subtract":
       case "add":
+        //var lastInputTemp = e.target.id
         if (value1 === null) {
           setValue1(Number(display));
         }
@@ -79,16 +101,27 @@ function App() {
           const result = processEquation(value1, operator, Number(display));
           setDisplay(result);
           setValue1(result);
+          setValue2(null);
         }
-        setOperator(e.target.id);
+        console.log("target id:",e.target.id)
+        if (e.target.id === "subtract" && (lastInput === "divide" || lastInput === "multiply" ||
+          lastInput === "subtract" || lastInput === "add")) {
+            console.log("p1")
+            setOperator(lastInput);
+            setMakeNegative(true);
+            //lastInputTemp = lastInput
+        }
+        else {
+          console.log("p2")
+          setOperator(e.target.id);
+          setMakeNegative(false);
+        }
         setNewValue(true);
+        setLastInput(e.target.id);
+        debug();
         break;
       case "equals":
-        console.log("Value1:",value1);
-        console.log("Value2:",value2);
-        console.log("operator:",operator);
-        console.log("display:",display);
-        if (value1 !== null && operator !== "") {
+        if (value1 !== null && operator !== null) {
           if (value2 === null) {
             setValue2(Number(display));
             const result = processEquation(value1, operator, Number(display));
@@ -102,13 +135,16 @@ function App() {
           }
         }
         setNewValue(true);
+        setLastInput("equals");
+        debug();
         break;
       case "clear":
           setDisplay('0');
           setNewValue(true);
           setValue1(null);
           setValue2(null);
-          setOperator('');
+          setOperator(null);
+          setLastInput(null);
           break;
       default:
         break;
