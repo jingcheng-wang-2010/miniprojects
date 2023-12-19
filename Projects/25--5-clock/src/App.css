@@ -1,0 +1,38 @@
+body {
+  text-align: center;
+}
+
+.app-container {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-title {
+  font-size: 2em;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.length-container {
+  display: inline-block;
+  width: 250px;
+}s
+
+.length-container p {
+  font-size: 1.5em;
+}
+
+.svg-inline--fa {
+  margin: 0 20px;
+}
+
+#timer-label {
+  font-size: 1.5em;
+}
+
+#time-left {
+  font-size: 3em;
+  margin-top: 0;
+}
