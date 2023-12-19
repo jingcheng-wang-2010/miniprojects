@@ -14,14 +14,14 @@ function App () {
   const [sessionValue, setSessionValue] = useState(25)
   const [timer, setTimer] = useState('25:00')
   const [timerLength, setTimerLength] = useState(25 * 60)
-  const [paused, setPaused] = useState(false);
-  const [inSession, setInSession] = useState(true);
+  const [paused, setPaused] = useState(true)
+  const [inSession, setInSession] = useState(true)
 
   const updateBreak = n => {
     const newValue = breakValue + n
     if (newValue > 0 && newValue <= 60) {
       setBreakValue(newValue)
-      if (!inSession){
+      if (!inSession) {
         setTimer(newValue + ':00')
         setTimerLength(newValue * 60)
       }
@@ -32,7 +32,7 @@ function App () {
     const newValue = sessionValue + n
     if (newValue > 0 && newValue <= 60) {
       setSessionValue(newValue)
-      if (inSession){
+      if (inSession) {
         setTimer(newValue + ':00')
         setTimerLength(newValue * 60)
       }
@@ -40,8 +40,8 @@ function App () {
   }
 
   const togglePaused = () => {
-    console.log("Clicked");
-    setPaused(!paused);
+    console.log('Clicked')
+    setPaused(!paused)
   }
 
   const reset = () => {
@@ -49,34 +49,38 @@ function App () {
     setSessionValue(25)
     setTimer('25:00')
     setTimerLength(25 * 60)
+    setPaused(true)
+    setInSession(true)
   }
 
   useEffect(() => {
     //Implementing the setInterval method
     const interval = setInterval(() => {
-      console.log("Paused:",paused);
+      console.log('Paused:', paused)
       if (!paused) {
-        let n = timerLength;
+        let n = timerLength
         if (timerLength === 0) {
           if (inSession) {
-            n = breakValue * 60;
+            n = breakValue * 60
+          } else {
+            n = sessionValue * 60
           }
-          else {
-            n = sessionValue * 60;
-          }
-          setInSession(!inSession);
+          const audio = new Audio(document.getElementById('beep').src)
+          //alert(document.getElementById(keyPressed.toUpperCase()).src)
+          audio.play()
+          setInSession(!inSession)
         }
         n = n - 1
         setTimerLength(n)
-        const timerString = Math.floor(n / 60) + ':' + (n % 60)
+        let timerString = Math.floor(n / 60) + ':'
+        timerString += n % 60 < 10 ? '0' + (n % 60) : n % 60
         setTimer(timerString)
-        
       }
     }, 1000)
 
     //Clearing the interval
     return () => clearInterval(interval)
-  }, [timerLength, paused, inSession])
+  }, [breakValue, sessionValue, timerLength, paused, inSession])
 
   return (
     <div className='app-container'>
@@ -120,14 +124,18 @@ function App () {
         </div>
         <div>
           <div id='start_stop' onClick={togglePaused}>
-            {paused ?
-              <FontAwesomeIcon icon={faPlay} /> : 
+            {paused ? (
+              <FontAwesomeIcon icon={faPlay} />
+            ) : (
               <FontAwesomeIcon icon={faPause} />
-            }
+            )}
           </div>
           <FontAwesomeIcon icon={faArrowsRotate} id='reset' onClick={reset} />
         </div>
-        <audio id='beep' />
+        <audio
+          id='beep'
+          src='https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3'
+        ></audio>
       </div>
     </div>
   )
