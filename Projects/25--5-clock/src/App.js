@@ -15,11 +15,16 @@ function App () {
   const [timer, setTimer] = useState('25:00')
   const [timerLength, setTimerLength] = useState(25 * 60)
   const [paused, setPaused] = useState(false);
+  const [inSession, setInSession] = useState(true);
 
   const updateBreak = n => {
     const newValue = breakValue + n
     if (newValue > 0 && newValue <= 60) {
       setBreakValue(newValue)
+      if (!inSession){
+        setTimer(newValue + ':00')
+        setTimerLength(newValue * 60)
+      }
     }
   }
 
@@ -27,8 +32,10 @@ function App () {
     const newValue = sessionValue + n
     if (newValue > 0 && newValue <= 60) {
       setSessionValue(newValue)
-      setTimer(newValue + ':00')
-      setTimerLength(newValue * 60)
+      if (inSession){
+        setTimer(newValue + ':00')
+        setTimerLength(newValue * 60)
+      }
     }
   }
 
@@ -49,16 +56,27 @@ function App () {
     const interval = setInterval(() => {
       console.log("Paused:",paused);
       if (!paused) {
-        const n = timerLength - 1
+        let n = timerLength;
+        if (timerLength === 0) {
+          if (inSession) {
+            n = breakValue * 60;
+          }
+          else {
+            n = sessionValue * 60;
+          }
+          setInSession(!inSession);
+        }
+        n = n - 1
         setTimerLength(n)
         const timerString = Math.floor(n / 60) + ':' + (n % 60)
         setTimer(timerString)
+        
       }
     }, 1000)
 
     //Clearing the interval
     return () => clearInterval(interval)
-  }, [timerLength, paused])
+  }, [timerLength, paused, inSession])
 
   return (
     <div className='app-container'>
@@ -97,7 +115,7 @@ function App () {
           </p>
         </div>
         <div>
-          <p id='timer-label'>Session</p>
+          <p id='timer-label'>{inSession ? 'Session' : 'Break'}</p>
           <p id='time-left'>{timer}</p>
         </div>
         <div>
