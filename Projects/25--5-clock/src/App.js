@@ -9,28 +9,29 @@ function App() {
       <div>
         <p id="break-label">Break Length</p>
         <p>
-          <FontAwesomeIcon icon={faArrowUp} />
-          5
-          <FontAwesomeIcon icon={faArrowDown} />
+          <FontAwesomeIcon icon={faArrowUp} id="break-increment" />
+          <span id="break-length">5</span>
+          <FontAwesomeIcon icon={faArrowDown} id="break-decrement" />
         </p>
       </div>
       <div>
-        <p>Session Length</p>
+        <p id="session-label">Session Length</p>
         <p>
-          <FontAwesomeIcon icon={faArrowUp} />
-          25
-          <FontAwesomeIcon icon={faArrowDown} />
+          <FontAwesomeIcon icon={faArrowUp} id="session-increment" />
+          <span id="session-length">25</span>
+          <FontAwesomeIcon icon={faArrowDown} id="session-decrement"/>
         </p>
       </div>
       <div>
-        <p>Session</p>
-        <p>25:00</p>
+        <p id="timer-label">Session</p>
+        <p id="time-left">25:00</p>
       </div>
       <div>
-        <FontAwesomeIcon icon={faPlay} />
+        <FontAwesomeIcon icon={faPlay} id="start_stop" />
         <FontAwesomeIcon icon={faPause} />
-        <FontAwesomeIcon icon={faArrowsRotate} />
+        <FontAwesomeIcon icon={faArrowsRotate} id="reset" />
       </div>
+      <audio id="beep" />
     </div>
   );
 }
