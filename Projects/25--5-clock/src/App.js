@@ -1,4 +1,6 @@
 import './App.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowUp, faArrowDown, faPlay, faPause, faArrowsRotate } from '@fortawesome/free-solid-svg-icons'
 
 function App() {
   return (
@@ -7,17 +9,17 @@ function App() {
       <div>
         <p id="break-label">Break Length</p>
         <p>
-          <i className='fa fa-arrow-up'></i>
+          <FontAwesomeIcon icon={faArrowUp} />
           5
-          <i className='fa fa-arrow-down'></i>
+          <FontAwesomeIcon icon={faArrowDown} />
         </p>
       </div>
       <div>
         <p>Session Length</p>
         <p>
-          <i className='fa fa-arrow-up'></i>
+          <FontAwesomeIcon icon={faArrowUp} />
           25
-          <i className='fa fa-arrow-down'></i>
+          <FontAwesomeIcon icon={faArrowDown} />
         </p>
       </div>
       <div>
@@ -25,9 +27,9 @@ function App() {
         <p>25:00</p>
       </div>
       <div>
-        <i className='fa fa-play'></i>
-        <i className='fa fa-pause'></i>
-        <i className='fa fa-arrows-rotate'></i>
+        <FontAwesomeIcon icon={faPlay} />
+        <FontAwesomeIcon icon={faPause} />
+        <FontAwesomeIcon icon={faArrowsRotate} />
       </div>
     </div>
   );
