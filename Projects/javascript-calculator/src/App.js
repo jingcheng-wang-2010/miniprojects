@@ -116,6 +116,7 @@ function App() {
           setOperator(e.target.id);
           setMakeNegative(false);
         }
+        setValue2(null);
         setNewValue(true);
         setLastInput(e.target.id);
         debug();
