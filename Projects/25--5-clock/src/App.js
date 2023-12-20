@@ -45,11 +45,11 @@ function App () {
   }
 
   const reset = () => {
+    setPaused(true)
     setBreakValue(5)
     setSessionValue(25)
     setTimer('25:00')
     setTimerLength(25 * 60)
-    setPaused(true)
     setInSession(true)
   }
 
@@ -72,7 +72,8 @@ function App () {
         }
         n = n - 1
         setTimerLength(n)
-        let timerString = Math.floor(n / 60) + ':'
+        let timerString = n / 60 < 10 ? '0' + Math.floor(n / 60) : Math.floor(n / 60);
+        timerString += ':';
         timerString += n % 60 < 10 ? '0' + (n % 60) : n % 60
         setTimer(timerString)
       }
@@ -80,7 +81,7 @@ function App () {
 
     //Clearing the interval
     return () => clearInterval(interval)
-  }, [breakValue, sessionValue, timerLength, paused, inSession])
+  }, [breakValue, sessionValue, timer, timerLength, paused, inSession])
 
   return (
     <div className='app-container'>
