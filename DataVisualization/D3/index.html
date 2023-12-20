@@ -1,10 +1,10 @@
 <html>
   <head>
     <style>
-        .bar:hover {
-          fill: brown;
-        }
-      </style>
+      .bar:hover {
+        fill: brown;
+      }
+    </style>
   </head>
 
   <body>
@@ -25,20 +25,28 @@
         .data(dataset)
         .enter()
         .append('rect')
-        .attr("x", (d, i) => i * 30)
+        .attr('x', (d, i) => i * 30)
         .attr('y', (d, i) => 100 - d * 3)
         .attr('width', 25)
-        .attr("height", (d, i) => d * 3)
+        .attr('height', (d, i) => d * 3)
         .attr('fill', 'navy')
-        .attr("class", "bar")
-
-      svg.selectAll("text")
+        .attr('class', 'bar')
+      svg
+        .selectAll('title')
+        .data(dataset)
+        .enter()
+        .append('title')
+        .text(d => d)
+        .attr('x', (d, i) => i * 30)
+        .attr('y', (d, i) => 100)
+      svg
+        .selectAll('text')
         .data(dataset)
         .enter()
         .append('text')
-        .text((d) => d)
-        .attr("x", (d, i) => i * 30)
-        .attr("y", (d, i) => h - 3 * d - 3)
+        .text(d => d)
+        .attr('x', (d, i) => i * 30)
+        .attr('y', (d, i) => h - 3 * d - 3)
         .attr('fill', 'red')
         .style('font-size', '25px')
     </script>
