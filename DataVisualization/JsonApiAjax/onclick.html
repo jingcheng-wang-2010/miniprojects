@@ -17,7 +17,14 @@
         .then(data => {
           document.getElementById('message').innerHTML = JSON.stringify(data)
         })*/
-        console.log(json[2].codeNames[1])
+        json.forEach(function(val) {
+          const keys = Object.keys(val);
+          html += "<div class = 'cat'>";
+          keys.forEach(function(key) {
+            html += "<strong>" + key + "</strong>: " + val[key] + "<br>";
+          });
+          html += "</div><br>";
+        });
     }
 
     // Add your code above this line
