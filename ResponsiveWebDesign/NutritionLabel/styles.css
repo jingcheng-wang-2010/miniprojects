@@ -50,3 +50,7 @@ header h1 {
   .small-text {
     font-size: 0.85rem;
   }
+
+  .calories-info h2 {
+    margin: 0;
+  }
