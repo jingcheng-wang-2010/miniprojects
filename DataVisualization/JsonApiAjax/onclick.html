@@ -1,35 +1,38 @@
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    // Add your code below this line
-    document.getElementById('getMessage').onclick = function () {
-       //XMLHttpRequest method
-      const req = new XMLHttpRequest()
-      req.open('GET', '/json/cats.json', true)
-      req.send()
-      req.onload = function () {
-        const json = JSON.parse(req.responseText)
-        document.getElementsByClassName('message')[0].innerHTML =
-          JSON.stringify(json)
+    document.addEventListener('DOMContentLoaded', function () {
+      // Add your code below this line
+      document.getElementById('getMessage').onclick = function () {
+         //XMLHttpRequest method
+        const req = new XMLHttpRequest()
+        req.open('GET', '/json/cats.json', true)
+        req.send()
+        req.onload = function () {
+          let json = JSON.parse(req.responseText)
+          //document.getElementsByClassName('message')[0].innerHTML =
+            //JSON.stringify(json)
+            let html = "";
+            json = json.filter(function(val) {
+              return (val.id !== 1);
+            });
+        /* //fetch method
+        fetch('/json/cats.json')
+          .then(response => response.json())
+          .then(data => {
+            document.getElementById('message').innerHTML = JSON.stringify(data)
+          })*/
+          json.forEach(function(val) {
+            const keys = Object.keys(val);
+            html += "<div class = 'cat'>";
+            //keys.forEach(function(key) {
+            //  html += "<strong>" + key + "</strong>: " + val[key] + "<br>";
+            //});
+            html += "<img src = '" + val.imageLink + "' " + "alt='" + val.altText + "'>";
+            html += "</div><br>";
+          });
       }
-      /* //fetch method
-      fetch('/json/cats.json')
-        .then(response => response.json())
-        .then(data => {
-          document.getElementById('message').innerHTML = JSON.stringify(data)
-        })*/
-        json.forEach(function(val) {
-          const keys = Object.keys(val);
-          html += "<div class = 'cat'>";
-          //keys.forEach(function(key) {
-          //  html += "<strong>" + key + "</strong>: " + val[key] + "<br>";
-          //});
-          html += "<img src = '" + val.imageLink + "' " + "alt='" + val.altText + "'>";
-          html += "</div><br>";
-        });
-    }
 
-    // Add your code above this line
-  })
+      // Add your code above this line
+    })
 </script>
 
 <style>
