@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bar Chart</title>
+    <link rel="stylesheet" href="bar-chart-styles.css" />
+  </head>
+  <body>
+    <div id="container">
+      <h1 id="title"></h1>
+    </div>
+    <script type="module">
+        import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
+      /*document.addEventListener('DOMContentLoaded', function () {
+        // Add your code below this line
+        document.getElementById('getMessage').onclick = function () {
+          //XMLHttpRequest method
+          const url =
+            'https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json'
+          const req = new XMLHttpRequest()
+          req.open('GET', url, true)
+          req.send()
+          req.onload = function () {
+            let json = JSON.parse(req.responseText)
+            //document.getElementsByClassName('message')[0].innerHTML =
+            //JSON.stringify(json)
+            let html = ''
+            json = json.filter(function (val) {
+              return val.id !== 1
+            })
+            json.forEach(function (val) {
+              const keys = Object.keys(val)
+              html += "<div class = 'cat'>"
+              //keys.forEach(function(key) {
+              //  html += "<strong>" + key + "</strong>: " + val[key] + "<br>";
+              //});
+              html +=
+                "<img src = '" +
+                val.imageLink +
+                "' " +
+                "alt='" +
+                val.altText +
+                "'>"
+              html += '</div><br>'
+            })
+          }
+        }
+      })*/
+
+      const dataset = [243.1, 246.3, 250.1, 260.3, 266.2]
+
+      const w = 900
+      const h = 560
+
+      const svg = d3.create("svg")
+        .attr('width', w)
+        .attr('height', h)
+      svg
+        .selectAll('rect')
+        .data(dataset)
+        .enter()
+        .append("rect")
+        .attr('x', (d, i) => i * 5)
+        .attr('y', 0)
+        .attr('width', 5)
+        .attr('height', (d, i) => d)
+
+    container.append(svg.node())
+    </script>
+  </body>
+</html>
