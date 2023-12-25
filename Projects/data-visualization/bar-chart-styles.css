@@ -1,5 +1,18 @@
 body {
-    background-color: aquamarine;
+    background-color: gray;
     display: flex;
+    height: 100vh;
     justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#container {
+    width: 900px;
+    height: 560px;
+    background-color: white;
+}
+
+g rect:hover {
+    background-color: gray
 }
