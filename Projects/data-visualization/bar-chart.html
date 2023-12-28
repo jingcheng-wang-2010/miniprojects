@@ -35,7 +35,8 @@
 
         // Declare tooltip
         const tooltip = d3.select('body').append('div')
-                          .attr('id', 'tooltip');
+                          .attr('id', 'tooltip')
+                          .attr('data-date','');
 
         // Declare the x (horizontal) scale
         const xScale = d3.scaleBand()
@@ -76,9 +77,10 @@
             tooltip.transition()
               .duration(100)
               .style('opacity', .7)
-              tooltip.text(`${d[0].slice(0,4)} $${d[1].toString().split('.')[0]}B`)
+            tooltip.text(`${d[0].slice(0,4)} ${d[0].slice(5,7)==="01"?"Q1":d[0].slice(5,7)==="04"?"Q2":d[0].slice(5,7)==="07"?"Q3":"Q4"}\n$${d[1].toString().split('.')[0]}B`)
+              .attr('data-date',d[0])
               .style('left', `${e.screenX + 4}px`)	
-          .style('top', `${e.screenY - 80}px`);
+              .style('top', `${e.screenY - 80}px`);
            })
            .on('mouseout', () => {		
         tooltip.transition()		
@@ -91,12 +93,21 @@
            .attr('id', 'x-axis')
            .attr('transform', `translate(0, ${height - marginBottom})`)
            .call(d3.axisBottom(xScale)
-            .tickValues(xScale.domain().filter((d, i) => {
-              if (i%30 === 0) {
-                return d[0].slice(0,4);
-              }
-            }
-              )))
+            .tickValues(xScale.domain().filter((d, i) => !(i%30)))
+                 .tickFormat((d, i) => {
+          let quarter = "Q1";
+          if (d.slice(5,7)==="07") {
+            quarter = "Q2"
+          }
+          else if (d.slice(5,7)==="10") {
+            quarter = "Q3"
+          }
+          else {
+            quarter = "Q4"
+          }
+          return d.slice(0,4) +" "+quarter;
+        }
+))
 
         // Add y-axis and label, and remove the domain line
         svg.append('g')
