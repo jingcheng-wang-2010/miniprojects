@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>React Installation Documentation Page</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main id="main-doc">
+      <section class="main-section" id="start_a_new_react_project">
+        <header class="section-header">Start a New React Project</header>
+        <p>
+          If you want to build a new app or a new website fully with React, we
+          recommend picking one of the React-powered frameworks popular in the
+          community. Frameworks provide features that most apps and sites
+          eventually need, including routing, data fetching, and generating
+          HTML.
+        </p>
+        <h4>Note</h4>
+        <p>
+          You need to install Node.js for local development. You can also choose
+          to use Node.js in production, but you don’t have to. Many React
+          frameworks support export to a static HTML/CSS/JS folder.
+        </p>
+        <h3>Production-grade React frameworks</h3>
+        <h4>Next.js</h4>
+        <p>
+          Next.js is a full-stack React framework. It’s versatile and lets you
+          create React apps of any size—from a mostly static blog to a complex
+          dynamic application. To create a new Next.js project, run in your
+          terminal:
+        </p>
+        <code>npx create-next-app@latest</code>
+        <p>If you’re new to Next.js, check out the learn Next.js course.</p>
+        <p>
+          Next.js is maintained by Vercel. You can deploy a Next.js app to any
+          Node.js or serverless hosting, or to your own server. Next.js also
+          supports a static export which doesn’t require a server.
+        </p>
+        <h4>Remix</h4>
+        <p>
+          Remix is a full-stack React framework with nested routing. It lets you
+          break your app into nested parts that can load data in parallel and
+          refresh in response to the user actions. To create a new Remix
+          project, run:
+        </p>
+        <code>npx create-remix</code>
+        <p>
+          If you’re new to Remix, check out the Remix blog tutorial (short) and
+          app tutorial (long).
+        </p>
+        <p>
+          Remix is maintained by Shopify. When you create a Remix project, you
+          need to pick your deployment target. You can deploy a Remix app to any
+          Node.js or serverless hosting by using or writing an adapter.
+        </p>
+        <h4>Gatsby</h4>
+        <p>
+            Gatsby is a React framework for fast CMS-backed websites. Its rich plugin ecosystem and its GraphQL data layer simplify integrating content, APIs, and services into one website. To create a new Gatsby project, run:
+        </p>
+        <code>npx create-gatsby</code>
+        <p>If you’re new to Gatsby, check out the Gatsby tutorial.</p>
+        <p>
+            Gatsby is maintained by Netlify. You can deploy a fully static Gatsby site to any static hosting. If you opt into using server-only features, make sure your hosting provider supports them for Gatsby.
+        </p>
+        <h4>Expo (for native apps)</h4>
+        <p>
+            Expo is a React framework that lets you create universal Android, iOS, and web apps with truly native UIs. It provides an SDK for React Native that makes the native parts easier to use. To create a new Expo project, run:
+        </p>
+        <code>npx create-expo-app</code>
+        <p>If you’re new to Expo, check out the Expo tutorial.</p>
+        <p>
+            Expo is maintained by Expo (the company). Building apps with Expo is free, and you can submit them to the Google and Apple app stores without restrictions. Expo additionally provides opt-in paid cloud services.
+        </p>
+      </section>
+      <section class="main-section" id="add_react_to_an_existing_project">
+        <header class="section-header">Add React to an Existing Project</header>
+        <p>
+          If you want to add some interactivity to your existing project, you
+          don’t have to rewrite it in React. Add React to your existing stack,
+          and render interactive React components anywhere.
+        </p>
+        <h4>Note</h4>
+        <p>
+          You need to install Node.js for local development. You can also choose
+          to use Node.js in production, but you don’t have to. Many React
+          frameworks support export to a static HTML/CSS/JS folder.
+        </p>
+        <h3>Using React for an entire subroute of your existing website</h3>
+        <p>
+          Let’s say you have an existing web app at example.com built with
+          another server technology (like Rails), and you want to implement all
+          routes starting with example.com/some-app/ fully with React.
+        </p>
+        <p>Here’s how we recommend to set it up:</p>
+        <ol>
+          <li>
+            Build the React part of your app using one of the React-based
+            frameworks.
+          </li>
+          <li>
+            BSpecify /some-app as the base path in your framework’s
+            configuration (here’s how: Next.js, Gatsby).
+          </li>
+          <li>
+            BConfigure your server or a proxy so that all requests under
+            /some-app/ are handled by your React app.
+          </li>
+        </ol>
+        <p>
+          This ensures the React part of your app can benefit from the best
+          practices baked into those frameworks.
+        </p>
+
+        <p>
+          Many React-based frameworks are full-stack and let your React app take
+          advantage of the server. However, you can use the same approach even
+          if you can’t or don’t want to run JavaScript on the server. In that
+          case, serve the HTML/CSS/JS export (next export output for Next.js,
+          default for Gatsby) at /some-app/ instead.
+        </p>
+
+        <h3>Using React for a part of your existing page</h3>
+        <p>Let’s say you have an existing page built with another technology (either a server one like Rails, or a client one like Backbone), and you want to render interactive React components somewhere on that page. That’s a common way to integrate React—in fact, it’s how most React usage looked at Meta for many years!</p>
+        <p>You can do this in two steps:</p>
+        <ol><li>Set up a JavaScript environment that lets you use the JSX syntax, split your code into modules with the import / export syntax, and use packages (for example, React) from the npm package registry.</li><li>Render your React components where you want to see them on the page.</li></ol>
+        <p>The exact approach depends on your existing page setup, so let’s walk through some details.</p>
+        <h3>Step 1: Set up a modular JavaScript environment</h3>
+        <p>A modular JavaScript environment lets you write your React components in individual files, as opposed to writing all of your code in a single file. It also lets you use all the wonderful packages published by other developers on the npm registry—including React itself! How you do this depends on your existing setup:
+
+        </p>
+        <ul>
+            <li>If your app is already split into files that use import statements, try to use the setup you already have. Check whether writing <div /> in your JS code causes a syntax error. If it causes a syntax error, you might need to transform your JavaScript code with Babel, and enable the Babel React preset to use JSX.</li>
+            <li>If your app doesn’t have an existing setup for compiling JavaScript modules, set it up with Vite. The Vite community maintains many integrations with backend frameworks, including Rails, Django, and Laravel. If your backend framework is not listed, follow this guide to manually integrate Vite builds with your backend.</li>
+        </ul>
+        <p>To check whether your setup works, run this command in your project folder:</p>
+        <code>npm install react react-dom</code>
+      </section>
+      <section class="main-section" id="editor_setup">
+        <header class="section-header">Editor Setup</header>
+      </section>
+      <section class="main-section" id="using_typescript">
+        <header class="section-header">Using TypeScript</header>
+      </section>
+      <section class="main-section" id="react_developer_tools">
+        <header class="section-header">React Developer Tools</header>
+      </section>
+    </main>
+  </body>
+</html>
