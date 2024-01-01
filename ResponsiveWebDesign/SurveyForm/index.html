@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Survey Form</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="container">
+      <h1 id="title">Survey for Foodies</h1>
+      <p id="description"></p>
+      <form id="survey-form">
+        <div class="form-group">
+          <label id="name-label" for="name">Name</label>
+          <input id="name" type="text" placeholder="Enter your name" required />
+        </div>
+        <div class="form-group">
+          <label id="email-label" for="email">Email</label>
+          <input id="email" type="email" placeholder="Enter your email" required />
+        </div>
+        <div class="form-group">
+          <label id="number-label">Age <span>(optional)</span></label>
+          <input id="number" type="number" name="age" min="10" max="100"  placeholder="Age"/>
+        </div>
+        <div class="form-group"></div>
+        <label id="dropdown-label" for="favourite-flavour">Favourite flavour of food</label>
+        <select id="dropdown" name="favourite-flavour">
+            <option disabled selected value>Select favourite flavour</option>
+            <option value="chilli">Chilli</option>
+            <option value="savoury">Savoury</option>
+            <option value="sweet">Sweet</option>
+            <option value="sour">Sour</option>
+        </select>
+        <div class="form-group">
+            <p>Are you ok with sharing food</p>
+          <label>
+            <input name="share-food" value="Yes" type="radio" class="input-radio" checked />
+            Yes
+        </label>
+        <label>
+            <input name="share-food" value="No" type="radio" class="input-radio"/>
+            No
+          </label>
+        </div>
+        <div class="form-group">
+            <p>Types of Cuisine that you enjoy</p>
+          <label>
+            <input name="cuisine" value="african-cuisine" type="checkbox" class="input-checkbox" />
+            African cuisine
+        </label>
+        <label>
+            <input name="cuisine" value="american-cuisine" type="checkbox" class="input-checkbox"/>
+            Cuisine of the Americas
+          </label>
+          <label>
+            <input name="cuisine" value="asian-cuisine" type="checkbox" class="input-checkbox"/>
+            Asian cuisine
+          </label>
+          <label>
+            <input name="cuisine" value="european-cuisine" type="checkbox" class="input-checkbox"/>
+            European cuisine
+          </label>
+        </div>
+        <div class="form-group">
+          <label id="comments-label" for="comments">Comments</label>
+            <textarea id="comments"></textarea>
+        </div>
+        <div class="form-group">
+          <button id="submit" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
