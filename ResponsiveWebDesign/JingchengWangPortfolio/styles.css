@@ -1,9 +1,12 @@
-.hero {
+@media (min-width: 800px) {
+  .hero {
     height: 100vh;
-}
-
-.hero-body {
-    display:flex;
+  }
+  .hero-body {
+    display: flex;
     flex-direction: column;
     justify-content: center;
+  }
 }
+
+

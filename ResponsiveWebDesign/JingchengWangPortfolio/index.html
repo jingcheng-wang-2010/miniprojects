@@ -7,6 +7,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
     />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -44,7 +45,7 @@
       </div>
     </nav>
 
-    <section id="welcome-section" class="hero is-link">
+    <section id="welcome-section" class="hero is-link mt-4">
       <div class="hero-body">
         <h1 class="title is-1 has-text-centered has-text-warning">
           Welcome, I am Jing
@@ -54,11 +55,12 @@
         </h2>
       </div>
     </section>
-    <section id="projects-section" class="hero is-dark">
+    <section id="projects-section" class="hero is-light">
       <div class="hero-body">
+        <div height="100%">
         <h3 class="title has-text-centered is-size-4">Past Projects</h3>
-        <div class="columns mt-5 is-8 is-variable">
-          <div class="column is-4-tablet is-3-desktop">
+        <div class="columns mt-5 is-8 is-variable is-multiline">
+          <div class="column is-4-tablet is-one-fifth-desktop">
             <div class="card">
               <div class="card-image has-text-centered px-6">
                 <img src="./img/project-eshop.jpg" alt="eShop" />
@@ -78,7 +80,7 @@
               </footer>
             </div>
           </div>
-          <div class="column is-4-tablet is-3-desktop">
+          <div class="column is-4-tablet is-one-fifth-desktop">
             <div class="card">
               <div class="card-image has-text-centered px-6">
                 <img
@@ -101,7 +103,7 @@
               </footer>
             </div>
           </div>
-          <div class="column is-4-tablet is-3-desktop">
+          <div class="column is-4-tablet is-one-fifth-desktop">
             <div class="card">
               <div class="card-image has-text-centered px-6">
                 <img
@@ -126,7 +128,7 @@
               </footer>
             </div>
           </div>
-          <div class="column is-4-tablet is-3-desktop">
+          <div class="column is-4-tablet is-one-fifth-desktop">
             <div class="card">
               <div class="card-image has-text-centered px-6">
                 <img
@@ -151,9 +153,7 @@
               </footer>
             </div>
           </div>
-        </div>
-        <div class="columns mt-5 is-8 is-variable">
-          <div class="column is-4-tablet is-3-desktop">
+          <div class="column is-4-tablet is-one-fifth-desktop">
             <div class="card">
               <div class="card-image has-text-centered px-6">
                 <img
@@ -176,7 +176,7 @@
               </footer>
             </div>
           </div>
-          <div class="column is-4-tablet is-3-desktop">
+          <div class="column is-4-tablet is-one-fifth-desktop">
             <div class="card">
               <div class="card-image has-text-centered px-6">
                 <img
@@ -199,7 +199,7 @@
               </footer>
             </div>
           </div>
-          <div class="column is-4-tablet is-3-desktop">
+          <div class="column is-4-tablet is-one-fifth-desktop">
             <div class="card">
               <div class="card-image has-text-centered px-6">
                 <img
@@ -222,7 +222,7 @@
               </footer>
             </div>
           </div>
-          <div class="column is-4-tablet is-3-desktop">
+          <div class="column is-4-tablet is-one-fifth-desktop">
             <div class="card">
               <div class="card-image has-text-centered px-6">
                 <img
@@ -231,7 +231,9 @@
                 />
               </div>
               <div class="card-content has-text-centered">
-                <p class="title is-size-6 has-text-dark">Scatterplot Graph in D3</p>
+                <p class="title is-size-6 has-text-dark">
+                  Scatterplot Graph in D3
+                </p>
               </div>
               <footer class="card-footer">
                 <p class="card-footer-item">
@@ -247,20 +249,17 @@
           </div>
         </div>
       </div>
+    </div>
     </section>
     <section id="profile-section" class="hero is-primary">
-      <div class="hero-body">
-        <ul>
-          <li>
-            <a
-              id="profile-link"
-              href="https://github.com/jingcheng-wang-2010"
-              target="_blank"
-              >Github</a
-            >
-          </li>
-        </ul>
+      <div class="hero-body is-size-4">
+        <div class="has-text-centered">
+          <a href="https://www.linkedin.com/in/jingcheng-wang-63415a173/" target="_blank" class="btn contact-details mx-5"><i class="fab fa-facebook-square"></i> linkedIn</a>
+          <a id="profile-link" href="https://github.com/jingcheng-wang-2010" target="_blank" class="btn contact-details mx-5"><i class="fab fa-github"></i> GitHub</a>
+          <a href="mailto:jingwang49@gmail.com" class="btn contact-details mx-5"><i class="fas fa-at"></i> Send a mail</a>
+          <a href="tel:61466832322" class="btn contact-details mx-5"><i class="fas fa-mobile-alt"></i> Call me</a>
       </div>
+    </div>
     </section>
     <script src="index.js"></script>
   </body>
