@@ -7,10 +7,11 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
     />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <nav
-      class="navbar has-shadow"
+      class="navbar has-shadow is-fixed-top"
       role="navigation"
       aria-label="main navigation"
     >
@@ -20,45 +21,235 @@
         </a>
         <a
           role="button"
+          id="burger"
           class="navbar-burger"
           aria-label="menu"
           aria-expanded="false"
-          data-target="navbar-basic"
+          data-target="navbar-links"
         >
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
         </a>
       </div>
-      <div id="navbar-basic" class="navbar-menu">
+      <div id="navbar-links" class="navbar-menu">
         <div class="navbar-start"></div>
         <div class="navbar-end">
           <div class="navbar-item">
             <a class="navbar-item" href="#welcome-section"> About </a>
-            <a class="navbar-item" href="#project-section"> Projects </a>
+            <a class="navbar-item" href="#projects-section"> Projects </a>
             <a class="navbar-item" href="#profile-section"> Contact </a>
           </div>
         </div>
       </div>
     </nav>
-    <section id="welcome-section" class="section">
-      <div class="container">
-        <h1>Welcome, I am Jingcheng</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque sunt dolorum in voluptate eum laborum tempore magnam necessitatibus accusamus possimus libero animi illum magni saepe voluptatem dolorem modi, dicta atque?</p>
+
+    <section id="welcome-section" class="hero is-link">
+      <div class="hero-body">
+        <h1 class="title is-1 has-text-centered has-text-warning">
+          Welcome, I am Jing
+        </h1>
+        <h2 class="subtitle is-5 is-italic has-text-centered has-text-light">
+          web developer, marketing specialist, photographer
+        </h2>
       </div>
     </section>
-    <section id="projects-section" class="section">
-      <div class="container">
-        <div id="projects">
-          <div class="project-tile"><a href="#">Project 1</a></div>
-          <div class="project-tile"><a href="#">Project 2</a></div>
-          <div class="project-tile"><a href="#">Project 3</a></div>
+    <section id="projects-section" class="hero is-dark">
+      <div class="hero-body">
+        <h3 class="title has-text-centered is-size-4">Past Projects</h3>
+        <div class="columns mt-5 is-8 is-variable">
+          <div class="column is-4-tablet is-3-desktop">
+            <div class="card">
+              <div class="card-image has-text-centered px-6">
+                <img src="./img/project-eshop.jpg" alt="eShop" />
+              </div>
+              <div class="card-content has-text-centered">
+                <p class="title is-size-6 has-text-dark">eShop</p>
+              </div>
+              <footer class="card-footer">
+                <p class="card-footer-item">
+                  <a
+                    href="https://github.com/jingcheng-wang-2010/e-shop"
+                    target="_blank"
+                    class="has-text-grey"
+                    >View</a
+                  >
+                </p>
+              </footer>
+            </div>
+          </div>
+          <div class="column is-4-tablet is-3-desktop">
+            <div class="card">
+              <div class="card-image has-text-centered px-6">
+                <img
+                  src="./img/project-company-website.jpg"
+                  alt="Company Website"
+                />
+              </div>
+              <div class="card-content has-text-centered">
+                <p class="title is-size-6 has-text-dark">Company Website</p>
+              </div>
+              <footer class="card-footer">
+                <p class="card-footer-item">
+                  <a
+                    href="https://www.southworldmedia.com/"
+                    target="_blank"
+                    class="has-text-grey"
+                    >View</a
+                  >
+                </p>
+              </footer>
+            </div>
+          </div>
+          <div class="column is-4-tablet is-3-desktop">
+            <div class="card">
+              <div class="card-image has-text-centered px-6">
+                <img
+                  src="./img/project-random-quote-generator.jpg"
+                  alt="Random Quote Generator"
+                />
+              </div>
+              <div class="card-content has-text-centered">
+                <p class="title is-size-6 has-text-dark">
+                  Random Quote Generator
+                </p>
+              </div>
+              <footer class="card-footer">
+                <p class="card-footer-item">
+                  <a
+                    href="https://codepen.io/jingchengwang/full/MWLPYro"
+                    target="_blank"
+                    class="has-text-grey"
+                    >View</a
+                  >
+                </p>
+              </footer>
+            </div>
+          </div>
+          <div class="column is-4-tablet is-3-desktop">
+            <div class="card">
+              <div class="card-image has-text-centered px-6">
+                <img
+                  src="./img/project-javascript-calculator.jpg"
+                  target="_blank"
+                  alt="Javascript Calculator"
+                />
+              </div>
+              <div class="card-content has-text-centered">
+                <p class="title is-size-6 has-text-dark">
+                  Javascript Calculator
+                </p>
+              </div>
+              <footer class="card-footer">
+                <p class="card-footer-item">
+                  <a
+                    href="https://codepen.io/jingchengwang/full/qBgeERJ"
+                    class="has-text-grey"
+                    >View</a
+                  >
+                </p>
+              </footer>
+            </div>
+          </div>
         </div>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque sunt dolorum in voluptate eum laborum tempore magnam necessitatibus accusamus possimus libero animi illum magni saepe voluptatem dolorem modi, dicta atque?</p>
+        <div class="columns mt-5 is-8 is-variable">
+          <div class="column is-4-tablet is-3-desktop">
+            <div class="card">
+              <div class="card-image has-text-centered px-6">
+                <img
+                  src="./img/project-markdown-previewer.jpg"
+                  alt="Markdown Previewer"
+                />
+              </div>
+              <div class="card-content has-text-centered">
+                <p class="title is-size-6 has-text-dark">Markdown Previewer</p>
+              </div>
+              <footer class="card-footer">
+                <p class="card-footer-item">
+                  <a
+                    href="https://codepen.io/jingchengwang/full/ExrrZNG"
+                    target="_blank"
+                    class="has-text-grey"
+                    >View</a
+                  >
+                </p>
+              </footer>
+            </div>
+          </div>
+          <div class="column is-4-tablet is-3-desktop">
+            <div class="card">
+              <div class="card-image has-text-centered px-6">
+                <img
+                  src="./img/project-25--5-session-clock.jpg"
+                  alt="25+5 Session Clock"
+                />
+              </div>
+              <div class="card-content has-text-centered">
+                <p class="title is-size-6 has-text-dark">25+5 Session Clock</p>
+              </div>
+              <footer class="card-footer">
+                <p class="card-footer-item">
+                  <a
+                    href="https://codepen.io/jingchengwang/full/oNVvNbB"
+                    target="_blank"
+                    class="has-text-grey"
+                    >View</a
+                  >
+                </p>
+              </footer>
+            </div>
+          </div>
+          <div class="column is-4-tablet is-3-desktop">
+            <div class="card">
+              <div class="card-image has-text-centered px-6">
+                <img
+                  src="./img/project-bar-chart-in-d3.jpg"
+                  alt="Bar Chart in D3"
+                />
+              </div>
+              <div class="card-content has-text-centered">
+                <p class="title is-size-6 has-text-dark">Bar Chart in D3</p>
+              </div>
+              <footer class="card-footer">
+                <p class="card-footer-item">
+                  <a
+                    href="https://codepen.io/jingchengwang/full/oNVvNbB"
+                    target="_blank"
+                    class="has-text-grey"
+                    >View</a
+                  >
+                </p>
+              </footer>
+            </div>
+          </div>
+          <div class="column is-4-tablet is-3-desktop">
+            <div class="card">
+              <div class="card-image has-text-centered px-6">
+                <img
+                  src="./img/project-scatterplot-graph-in-d3.jpg"
+                  alt="Scatterplot Graph in D3"
+                />
+              </div>
+              <div class="card-content has-text-centered">
+                <p class="title is-size-6 has-text-dark">Scatterplot Graph in D3</p>
+              </div>
+              <footer class="card-footer">
+                <p class="card-footer-item">
+                  <a
+                    href="https://codepen.io/jingchengwang/full/BabNpZR"
+                    target="_blank"
+                    class="has-text-grey"
+                    >View</a
+                  >
+                </p>
+              </footer>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
-    <section id="profile-section" class="section">
-      <div class="container">
+    <section id="profile-section" class="hero is-primary">
+      <div class="hero-body">
         <ul>
           <li>
             <a
@@ -69,7 +260,6 @@
             >
           </li>
         </ul>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque sunt dolorum in voluptate eum laborum tempore magnam necessitatibus accusamus possimus libero animi illum magni saepe voluptatem dolorem modi, dicta atque?</p>
       </div>
     </section>
     <script src="index.js"></script>
