@@ -47,6 +47,10 @@ header h1 {
     border: 0;
   }
 
+  .medium {
+    height: 5px;
+  }
+
   .small-text {
     font-size: 0.85rem;
   }
@@ -73,6 +77,6 @@ header h1 {
     margin: -7px -2px;
   }
 
-  .medium {
-    height: 5px;
-  }
+.right {
+  justify-content: flex-end;
+}
